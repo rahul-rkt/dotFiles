@@ -1,0 +1,75 @@
+"*":
+  "exception-reporting":
+    userId: "a7118940-a776-5e76-08c6-0311f9b89de7"
+  welcome:
+    showOnStartup: false
+  core:
+    themes: [
+      "one-dark-ui"
+      "base16-ocean-dark-syntax-theme"
+    ]
+    ignoredNames: [
+      ".git"
+      ".DS_Store"
+      ".vagrant"
+      "_site"
+      ".sass-cache"
+      ".idea .brackets.json"
+    ]
+    disabledPackages: [
+      "markdown-preview"
+      "minimap"
+      "minimap-highlight-selected"
+    ]
+  editor:
+    invisibles: {}
+    fontSize: 15
+    showIndentGuide: true
+    fontFamily: "Andale Mono"
+    softWrap: true
+    softWrapHangingIndent: 2
+    tabLength: 4
+  "tree-view":
+    hideIgnoredNames: true
+  "project-manager":
+    closeCurrent: true
+    environmentSpecificProjects: true
+    sortBy: "title"
+  "atom-beautify":
+    _analyticsUserId: "d63c1e81-f0c2-47b0-8116-87e720539296"
+    html_indent_inner_html: true
+    html_indent_scripts: "separate"
+    html_indent_size: 4
+    html_max_preserve_newlines: 2
+  tabs:
+    tabScrolling: true
+    enableVcsColoring: true
+    usePreviewTabs: true
+  "atom-minify": {}
+  minimap:
+    scrollAnimation: true
+    scrollAnimationDuration: 250
+    textOpacity: 0.5
+    plugins:
+      "highlight-selected": true
+  autosave:
+    enabled: true
+  "save-session":
+    dataSaveFolder: "/Users/rahulthakur/.atom/packages/save-session/projects"
+  "trailing-spaces":
+    enableForIndentation: true
+  "auto-copyright":
+    owner: "Rahul Thakur"
+    template: "&copy; 2015 R (r@rahulthakur.me)"
+  autoprefixer: {}
+  "terminal-status":
+    WindowHeight: 10
+  "file-icons":
+    forceShow: true
+  "advanced-open-file": {}
+  "auto-update-packages": {}
+  "color-picker":
+    preferredFormat: "HEX"
+    uppercaseColorValues: true
+  "travis-ci-status": {}
+  "status-bar": {}

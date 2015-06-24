@@ -1,0 +1,36 @@
+# -----------------------------------------------------------------------------
+#          FILE:  .gitignore_global
+#   DESCRIPTION:  Git global ignore cases
+#        AUTHOR:  Rahul Thakur < rahulthakur.me | r@rahulthakur.me >
+#       VERSION:  1.0.0
+# -----------------------------------------------------------------------------
+
+
+# OS or Editor stuff ----------------------------------------------------------
+*~
+.DS_Store
+._*
+Thumbs.db
+.git
+.dropbox
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+.brackets.json
+.projecttoix.json
+.idea
+# -----------------------------------------------------------------------------
+
+
+# General dev stuff -----------------------------------------------------------
+.vagrant
+Gemfile.lock
+bin/
+/vendor/
+node_modules
+# -----------------------------------------------------------------------------

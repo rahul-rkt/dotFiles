@@ -23,12 +23,12 @@
     ]
   editor:
     invisibles: {}
-    fontSize: 15
     showIndentGuide: true
     fontFamily: "Andale Mono"
     softWrap: true
     softWrapHangingIndent: 2
     tabLength: 4
+    fontSize: 15
   "tree-view":
     hideIgnoredNames: true
   "project-manager":

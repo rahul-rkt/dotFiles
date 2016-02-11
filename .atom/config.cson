@@ -1,13 +1,41 @@
 "*":
-  "exception-reporting":
-    userId: "a7118940-a776-5e76-08c6-0311f9b89de7"
-  welcome:
-    showOnStartup: false
+  "advanced-open-file": {}
+  "atom-beautify":
+    _analyticsUserId: "d63c1e81-f0c2-47b0-8116-87e720539296"
+    html_indent_inner_html: true
+    html_indent_scripts: "separate"
+    html_max_preserve_newlines: 2
+  "atom-material-ui":
+    fonts: {}
+    panels:
+      panelContrast: true
+    tabs:
+      showTabIcons: "Show on all tabs"
+    treeView:
+      compactTreeView: true
+    ui:
+      slimScrollbar: true
+  "atom-minify": {}
+  "auto-copyright":
+    owner: "Rahul Thakur"
+    template: "&copy; 2015 R (r@rahulthakur.me)"
+  "auto-update-packages": {}
+  autoprefixer: {}
+  autosave:
+    enabled: true
+  "color-picker":
+    preferredFormat: "HEX"
+    uppercaseColorValues: true
   core:
-    themes: [
-      "one-dark-ui"
-      "base16-ocean-dark-syntax-theme"
+    disabledPackages: [
+      "markdown-preview"
+      "minimap"
+      "minimap-highlight-selected"
+      "autocomplete-css"
+      "status-bar"
+      "tabs"
     ]
+    excludeVcsIgnoredPaths: false
     ignoredNames: [
       ".git"
       ".DS_Store"
@@ -16,60 +44,52 @@
       ".sass-cache"
       ".idea .brackets.json"
     ]
-    disabledPackages: [
-      "markdown-preview"
-      "minimap"
-      "minimap-highlight-selected"
+    themes: [
+      "atom-material-ui"
+      "base16-ocean-dark-syntax-theme"
     ]
   editor:
-    invisibles: {}
-    showIndentGuide: true
+    backUpBeforeSaving: true
     fontFamily: "Andale Mono"
+    invisibles: {}
+    lineHeight: 2
+    scrollPastEnd: true
+    showIndentGuide: true
     softWrap: true
     softWrapHangingIndent: 2
     tabLength: 4
-    fontSize: 15
-  "tree-view":
-    hideIgnoredNames: true
-  "project-manager":
-    closeCurrent: true
-    environmentSpecificProjects: true
-    sortBy: "title"
-  "atom-beautify":
-    _analyticsUserId: "d63c1e81-f0c2-47b0-8116-87e720539296"
-    html_indent_inner_html: true
-    html_indent_scripts: "separate"
-    html_indent_size: 4
-    html_max_preserve_newlines: 2
-  tabs:
-    tabScrolling: true
-    enableVcsColoring: true
-    usePreviewTabs: true
-  "atom-minify": {}
+    tabType: "soft"
+  "exception-reporting":
+    userId: "a7118940-a776-5e76-08c6-0311f9b89de7"
+  "file-icons":
+    forceShow: true
   minimap:
+    plugins:
+      "highlight-selected": true
     scrollAnimation: true
     scrollAnimationDuration: 250
     textOpacity: 0.5
-    plugins:
-      "highlight-selected": true
-  autosave:
-    enabled: true
+  "one-dark-ui": {}
+  pigments:
+    groupPaletteColors: "by file"
+    markerType: "dot"
+    sortPaletteColors: "by color"
+  "project-manager":
+    environmentSpecificProjects: true
+    sortBy: "title"
   "save-session":
     dataSaveFolder: "/Users/rahulthakur/.atom/packages/save-session/projects"
-  "trailing-spaces":
-    enableForIndentation: true
-  "auto-copyright":
-    owner: "Rahul Thakur"
-    template: "&copy; 2015 R (r@rahulthakur.me)"
-  autoprefixer: {}
+  "status-bar": {}
+  tabs:
+    enableVcsColoring: true
+    tabScrolling: true
+    usePreviewTabs: true
   "terminal-status":
     WindowHeight: 10
-  "file-icons":
-    forceShow: true
-  "advanced-open-file": {}
-  "auto-update-packages": {}
-  "color-picker":
-    preferredFormat: "HEX"
-    uppercaseColorValues: true
+  "trailing-spaces":
+    enableForIndentation: true
   "travis-ci-status": {}
-  "status-bar": {}
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false

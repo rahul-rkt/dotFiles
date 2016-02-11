@@ -95,7 +95,7 @@ export EDITOR="nano"
 export VISUAL="atom"
 
 # timezone
-export TZ=Asia/Hong_Kong
+export TZ=Asia/Kolkata
 
 # path
 export PATH=$PATH:/usr/local/heroku/bin:~/.composer/vendor/bin
@@ -125,8 +125,10 @@ alias ll="ls -aGl"
 alias rc="sudo nano ~/.zshrc"
 alias nrc="sudo nano ~/.nanorc"
 alias s="sudo -s"
-alias r="exec $SHELL -l"
-alias python=python3
+alias rm="sudo rm -rf"
+alias reload="exec $SHELL -l"
+# alias python=python3
+alias r="cd ~/Documents/Work/Workspaces/R; jekyll build --destination ~/Documents/Work/Workspaces/rahulthakur.me --config _config_live.yml; cd ~/Documents/Work/Workspaces/rahulthakur.me; git add .; git commit -m 'Updated --auto-deploy'; git push;"
 
 # update os (osx)
 alias osu="sudo softwareupdate -i -a"
@@ -186,19 +188,24 @@ alias ffatxxx="sudo find -x / -type f -size +1G"
 # git
 alias ga="git add ."
 alias gc="git commit -m"
-alias gp="git push --all"
+alias gp="git push --all origin"
 alias gs="git status"
 alias gb="git checkout"
+alias gh="git push origin master; git checkout gh-pages; git rebase master;
+git push origin gh-pages; git checkout master"
 
 # dev
 alias jb="jekyll build -w"
 alias js="jekyll serve -w"
 alias bdi="bundle install"
 alias pw="cd ~/.pow"
-
-# temp
-alias bttr="cd ~/Documents/Work/Butter"
-alias rt="cd ~/Documents/Work/Workspaces/R"
+alias vs="vagrant global-status"
+alias vu="vagrant up 1fe400d"
+alias vh="vagrant halt 1fe400d"
+alias vr="vagrant reload 1fe400d"
+alias ve="vagrant ssh 1fe400d"
+alias vp="vagrant reload 1fe400d --provision"
+alias linode="ssh -i mj developer@139.162.17.199"
 # -----------------------------------------------------------------------------
 
 

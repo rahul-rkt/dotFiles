@@ -1,0 +1,74 @@
+randomCode:
+  title: "randomCode"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Workspaces/randomCode"
+  ]
+RD:
+  title: "RD"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Butter/rd"
+  ]
+BowINIT:
+  title: "BowINIT"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Workspaces/BowINIT"
+  ]
+dotFiles:
+  title: "dotFiles"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Workspaces/dotFiles"
+  ]
+R:
+  title: "R"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Workspaces/R"
+  ]
+Onedoor:
+  title: "Onedoor"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Workspaces/onedoor"
+  ]
+ColourMemoryWebApp:
+  title: "ColourMemoryWebApp"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Workspaces/ColourMemory"
+    "/Users/rahulthakur/Documents/Work/Workspaces/ColourMemoryAPI"
+  ]
+HackerNews:
+  title: "HackerNews"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Workspaces/HackerNews"
+  ]
+Musejam:
+  title: "Musejam"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Musejam/musejam-app"
+    "/Users/rahulthakur/Documents/Work/Musejam/musejam-website"
+    "/Users/rahulthakur/Documents/Work/Musejam/musejam-admin"
+    "/Users/rahulthakur/Documents/Work/Musejam/musejam-social-app"
+  ]
+MusejamApp:
+  title: "Musejam App"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Musejam/musejam-app"
+  ]
+MusejamWebsite:
+  title: "Musejam Website"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Musejam/musejam-website"
+  ]
+MusejamAdmin:
+  title: "Musejam Admin"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Musejam/musejam-admin"
+  ]
+MusejamSocialApp:
+  title: "Musejam Social App"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Musejam/musejam-social-apps"
+  ]
+MusejamControlPanel:
+  title: "Musejam Control Panel"
+  paths: [
+    "/Users/rahulthakur/Documents/Work/Musejam/Control-Panel-2013"
+  ]

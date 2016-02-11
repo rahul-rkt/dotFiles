@@ -28,7 +28,9 @@
   'ctrl-cmd-p': 'unset!'
   'alt-shift-p': 'project-manager:toggle'
   'cmd-\\': 'unset!'
-  'cmd-`': 'tree-view:toggle'
+  'cmd-`': 'unset!'
+  'ctrl-`': 'unset!'
+  'ctrl-`': 'tree-view:toggle'
   'cmd-t': 'unset!'
   'ctrl-o': 'fuzzy-finder:toggle-file-finder'
 
@@ -42,3 +44,11 @@
 '.platform-darwin atom-text-editor':
   'ctrl-shift-L': 'unset!'
   'cmd-t': 'grammar-selector:show'
+
+'body':
+  'ctrl-tab': 'unset!'
+  'ctrl-]': 'unset!'
+  'ctrl-]': 'pane:show-next-item'
+  'ctrl-shift-tab': 'unset!'
+  'ctrl-[': 'unset!'
+  'ctrl-[': 'pane:show-previous-item'

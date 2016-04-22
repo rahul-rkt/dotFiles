@@ -126,8 +126,10 @@ alias rc="sudo nano ~/.zshrc"
 alias nrc="sudo nano ~/.nanorc"
 alias s="sudo -s"
 alias rm="sudo rm -rf"
-alias reload="exec $SHELL -l"
-# alias python=python3
+alias rr="exec $SHELL -l"
+alias q="exit"
+alias c="clear"
+alias culprit="lsof | grep"
 alias r="cd ~/Documents/Work/Workspaces/R; jekyll build --destination ~/Documents/Work/Workspaces/rahulthakur.me --config _config_live.yml; cd ~/Documents/Work/Workspaces/rahulthakur.me; git add .; git commit -m 'Updated --auto-deploy'; git push;"
 
 # update os (osx)
@@ -143,10 +145,10 @@ alias brs="brew search"
 alias bru="brew update; brew upgrade --all; brew cleanup"
 
 # apt
-# alias apt-i="apt-get install -y"
-# alias apt-s="apt-cache search"
-# alias apt-l="dpkg --get-selections | grep -v deinstall"
-# alias apt-u="apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y"
+alias apt-i="apt-get install -y"
+alias apt-s="apt-cache search"
+alias apt-l="dpkg --get-selections | grep -v deinstall"
+alias apt-u="apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y"
 
 # composer
 alias compi="composer global install"
@@ -193,6 +195,7 @@ alias gs="git status"
 alias gb="git checkout"
 alias gh="git push origin master; git checkout gh-pages; git rebase master;
 git push origin gh-pages; git checkout master"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 # dev
 alias jb="jekyll build -w"
@@ -205,11 +208,14 @@ alias vh="vagrant halt 1fe400d"
 alias vr="vagrant reload 1fe400d"
 alias ve="vagrant ssh 1fe400d"
 alias vp="vagrant reload 1fe400d --provision"
-alias linode="ssh -i mj developer@139.162.17.199"
+alias linode="ssh developer@139.162.17.199"
 # -----------------------------------------------------------------------------
 
 
 # External --------------------------------------------------------------------
 source ~/.profile
 source ~/.tmuxinator/tmuxinator.zsh
+source ~/z.sh
 # -----------------------------------------------------------------------------
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

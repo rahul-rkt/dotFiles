@@ -48,7 +48,24 @@
 'body':
   'ctrl-tab': 'unset!'
   'ctrl-]': 'unset!'
-  'ctrl-]': 'pane:show-next-item'
   'ctrl-shift-tab': 'unset!'
   'ctrl-[': 'unset!'
+
+  'ctrl-]': 'pane:show-next-item'
   'ctrl-[': 'pane:show-previous-item'
+
+'body':
+  'cmd-k cmd-left': 'unset!'
+  'cmd-k cmd-up': 'unset!'
+  'cmd-k cmd-right': 'unset!'
+  'cmd-k cmd-down': 'unset!'
+
+  'cmd-l left': 'unset!'
+  'cmd-l up': 'unset!'
+  'cmd-l right': 'unset!'
+  'cmd-l down': 'unset!'
+
+  'cmd-l left': 'window:focus-pane-on-left'
+  'cmd-l up': 'window:focus-pane-above'
+  'cmd-l right': 'window:focus-pane-on-right'
+  'cmd-l down': 'window:focus-pane-below'

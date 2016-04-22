@@ -1,25 +1,36 @@
 "*":
   "advanced-open-file": {}
+  "atom-autocomplete-php":
+    insertNewlinesForUseStatements: true
+    verboseErrors: true
   "atom-beautify":
     _analyticsUserId: "d63c1e81-f0c2-47b0-8116-87e720539296"
     html_indent_inner_html: true
     html_indent_scripts: "separate"
     html_max_preserve_newlines: 2
   "atom-material-ui":
-    fonts: {}
-    panels:
-      panelContrast: true
+    colors:
+      abaseColor:
+        red: 96
+        green: 125
+        blue: 139
+        alpha: 1
+      genAccent: true
+      predefinedColor: "Blue Grey"
+    fonts:
+      fontSize: 14
     tabs:
-      showTabIcons: "Show on all tabs"
+      compactTabs: true
     treeView:
-      compactTreeView: true
-    ui:
-      slimScrollbar: true
+      compactList: true
+    ui: {}
   "atom-minify": {}
   "auto-copyright":
     owner: "Rahul Thakur"
     template: "&copy; 2015 R (r@rahulthakur.me)"
   "auto-update-packages": {}
+  "autoclose-html": {}
+  "autocomplete-php": {}
   autoprefixer: {}
   autosave:
     enabled: true
@@ -34,6 +45,7 @@
       "autocomplete-css"
       "status-bar"
       "tabs"
+      "atom-autocomplete-php"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [

@@ -145,10 +145,10 @@ alias brs="brew search"
 alias bru="brew update; brew upgrade --all; brew cleanup"
 
 # apt
-alias apt-i="apt-get install -y"
-alias apt-s="apt-cache search"
-alias apt-l="dpkg --get-selections | grep -v deinstall"
-alias apt-u="apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y"
+# alias apti="sudo apt-get install -y"
+# alias apts="sudo apt-cache search"
+# alias aptl="sudo dpkg --get-selections | grep -v deinstall"
+# alias aptu="sudo apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y"
 
 # composer
 alias compi="composer global install"
@@ -203,11 +203,11 @@ alias js="jekyll serve -w"
 alias bdi="bundle install"
 alias pw="cd ~/.pow"
 alias vs="vagrant global-status"
-alias vu="vagrant up 1fe400d"
-alias vh="vagrant halt 1fe400d"
-alias vr="vagrant reload 1fe400d"
-alias ve="vagrant ssh 1fe400d"
-alias vp="vagrant reload 1fe400d --provision"
+alias vu="vagrant up 4f83841"
+alias vh="vagrant halt 4f83841"
+alias vr="vagrant reload 4f83841"
+alias ve="vagrant ssh 4f83841"
+alias vp="vagrant reload 4f83841 --provision"
 alias linode="ssh developer@139.162.17.199"
 # -----------------------------------------------------------------------------
 

@@ -219,9 +219,6 @@ alias vh="vagrant halt 4f83841"
 alias vr="vagrant reload 4f83841"
 alias ve="vagrant ssh 4f83841"
 alias vp="vagrant reload 4f83841 --provision"
-alias linode="ssh developer@139.162.17.199"
-alias prod="ssh admin@52.74.140.238"
-alias prodsql="mysql --host=musejam.cxrllrsncx1s.ap-southeast-1.rds.amazonaws.com --user=mj --password=dmGP92GRXKXTzRuWXY9s mj"
 # -----------------------------------------------------------------------------
 
 

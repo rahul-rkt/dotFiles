@@ -23,7 +23,9 @@
       compactTabs: true
     treeView:
       compactList: true
-    ui: {}
+    ui:
+      panelContrast: true
+      panelShadows: true
   "atom-minify": {}
   "auto-copyright":
     owner: "Rahul Thakur"

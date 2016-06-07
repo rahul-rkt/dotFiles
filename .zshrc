@@ -117,9 +117,9 @@ alias .....="cd ../../../.."
 alias ~="cd ~"
 
 # ls
-alias ls="ls -G"
-alias l="ls -aG"
-alias ll="ls -aGl"
+alias ls="ls -Gh"
+alias l="ls -aGh"
+alias ll="ls -aGlh"
 
 # essentials
 alias rc="sudo nano ~/.zshrc"
@@ -130,6 +130,7 @@ alias rr="exec $SHELL -l"
 alias q="exit"
 alias c="clear"
 alias culprit="lsof | grep"
+alias restartDock="killall Dock"
 alias r="cd ~/Documents/Work/Workspaces/R; jekyll build --destination ~/Documents/Work/Workspaces/rahulthakur.me --config _config_live.yml; cd ~/Documents/Work/Workspaces/rahulthakur.me; git add .; git commit -m 'Updated --auto-deploy'; git push;"
 
 # update os (osx)
@@ -189,10 +190,20 @@ alias ffatxxx="sudo find -x / -type f -size +1G"
 
 # git
 alias ga="git add ."
-alias gc="git commit -m"
-alias gp="git push --all origin"
+alias gc="git add .; git commit -m"
+alias gpud="git pull upstream develop"
+alias gpod="git pull origin develop; git push origin develop"
+alias gpp="git pull upstream develop; git pull origin develop; git push origin develop"
 alias gs="git status"
-alias gb="git checkout"
+alias gb="git branch"
+alias gch="git checkout"
+alias gcb="git checkout -b"
+alias gm="git merge"
+alias gd="git diff"
+alias gk="gitk"
+alias gsl="git stash list"
+alias gss="git stash save"
+alias gsp="git stash pop"
 alias gh="git push origin master; git checkout gh-pages; git rebase master;
 git push origin gh-pages; git checkout master"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -209,6 +220,8 @@ alias vr="vagrant reload 4f83841"
 alias ve="vagrant ssh 4f83841"
 alias vp="vagrant reload 4f83841 --provision"
 alias linode="ssh developer@139.162.17.199"
+alias prod="ssh admin@52.74.140.238"
+alias prodsql="mysql --host=musejam.cxrllrsncx1s.ap-southeast-1.rds.amazonaws.com --user=mj --password=dmGP92GRXKXTzRuWXY9s mj"
 # -----------------------------------------------------------------------------
 
 
@@ -218,4 +231,4 @@ source ~/.tmuxinator/tmuxinator.zsh
 source ~/z.sh
 # -----------------------------------------------------------------------------
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

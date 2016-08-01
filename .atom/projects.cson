@@ -43,9 +43,6 @@ Musejam:
   title: "Musejam"
   paths: [
     "/Users/rahulthakur/Documents/Work/Musejam/musejam-app"
-    "/Users/rahulthakur/Documents/Work/Musejam/musejam-website"
-    "/Users/rahulthakur/Documents/Work/Musejam/musejam-admin"
-    "/Users/rahulthakur/Documents/Work/Musejam/musejam-social-app"
   ]
 MusejamApp:
   title: "Musejam App"

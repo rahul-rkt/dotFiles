@@ -50,10 +50,8 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*) Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/ Example format: plugins=(rails git textmate ruby
+# lighthouse) Add wisely, as too many plugins slow down shell startup.
 plugins=(atom brew bundler osx git github git-flow tmux tmuxinator zsh-syntax-highlighting)
 
 # User configuration
@@ -86,13 +84,13 @@ source $ZSH/oh-my-zsh.sh
 export TERM=xterm-256color
 
 # locale
-export LANG=en_IN.UTF-8
-export LANGUAGE=en_IN.UTF-8
-export LC_ALL=en_IN.UTF-8
+export LANG=en_GB.UTF-8
+export LANGUAGE=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
 
 # editors
 export EDITOR="nano"
-export VISUAL="atom"
+# export VISUAL="atom"
 
 # timezone
 export TZ=Asia/Kolkata
@@ -101,7 +99,7 @@ export TZ=Asia/Kolkata
 export PATH=$PATH:/usr/local/heroku/bin:~/.composer/vendor/bin
 
 # homebrew fix
-export HOMEBREW_GITHUB_API_TOKEN=1a76bc4e652e9f2e9109a6cb527fcf8920fe5ec5
+export HOMEBREW_GITHUB_API_TOKEN=42e428f759af0cee27ce481dec43e535d198af62
 
 # ls colours
 export LSCOLORS=ExFxcxdxbxexexabagacad
@@ -117,21 +115,36 @@ alias .....="cd ../../../.."
 alias ~="cd ~"
 
 # ls
-alias ls="ls -Gh"
-alias l="ls -aGh"
-alias ll="ls -aGlh"
+alias l="ls -AFGh"
+alias ll="ls -AFGhl"
+alias lls="ls -AFGhlS"
 
 # essentials
 alias rc="sudo nano ~/.zshrc"
+alias prc="cat ~/.zshrc"
+alias pp="cat ~/.profile"
 alias nrc="sudo nano ~/.nanorc"
 alias s="sudo -s"
 alias rm="sudo rm -rf"
 alias rr="exec $SHELL -l"
 alias q="exit"
 alias c="clear"
+alias h="history | grep"
 alias culprit="lsof | grep"
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias restartDock="killall Dock"
 alias r="cd ~/Documents/Work/Workspaces/R; jekyll build --destination ~/Documents/Work/Workspaces/rahulthakur.me --config _config_live.yml; cd ~/Documents/Work/Workspaces/rahulthakur.me; git add .; git commit -m 'Updated --auto-deploy'; git push;"
+alias lazy="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl | head -n20"
+
+# find
+alias ff="sudo find . -name"
+alias ffat="sudo find -x / -type f -size +100M"
+alias ffatx="sudo find -x / -type f -size +250M"
+alias ffatxx="sudo find -x / -type f -size +500M"
+alias ffatxxx="sudo find -x / -type f -size +1G"
+alias frcd="sudo rm -rf /System/Library/Caches/com.apple.coresymbolicationd/data"
+alias frcg="sudo find /private/var/tmp -name \"cachegrind*\" -exec rm -rf {} \;"
+alias frt="sudo rm -rf /System/Library/Caches/com.apple.coresymbolicationd/data; sudo find /private/var/tmp -name \"cachegrind*\" -exec rm -rf {} \;"
 
 # update os (osx)
 alias osu="sudo softwareupdate -i -a"
@@ -156,6 +169,7 @@ alias compi="composer global install"
 alias comps="composer search"
 alias compl="composer global show -i"
 alias compu="composer global self-update; composer global update; composer global clear-cache"
+alias dump="composer dump-autoload -o"
 
 # npm
 alias npmi="npm install -g"
@@ -182,33 +196,55 @@ alias update="sudo softwareupdate -i -a; brew update; brew upgrade --all; brew c
 # update everything (ubuntu)
 # alias update="do-release-upgrade -d -f DistUpgradeViewNonInteractive; apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y; composer global self-update; composer global update; composer global clear-cache; npm install npm -g; npm update -g; npm cache clean; pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U; rm -rf ~/.pip/cache/; gem update --system; gem update; gem cleanup"
 
-# find large files
-alias ffat="sudo find -x / -type f -size +100M"
-alias ffatx="sudo find -x / -type f -size +250M"
-alias ffatxx="sudo find -x / -type f -size +500M"
-alias ffatxxx="sudo find -x / -type f -size +1G"
-
 # git
-alias ga="git add ."
-alias gc="git add .; git commit -m"
-alias gpud="git pull upstream develop"
-alias gpod="git pull origin develop; git push origin develop"
-alias gpp="git pull upstream develop; git pull origin develop; git push origin develop"
+alias pgc="cat .git/config"
+alias egc="nano .git/config"
+alias gr="git remote"
+alias grv="git remote -v"
+alias gra="git remote add"
+alias grr="git remote rm"
+alias grall="git-remote-all"
+alias ga="git add"
+alias gap="git add -p"
+alias gaa="git add ."
+alias gc="git commit"
+alias gcp="git commit -i"
+alias gcm="git commit -m"
+alias reset="git reset"
+alias purge="git reset --hard"
+alias gf="git fetch"
+alias gfa="git fetch --all"
+alias gp="git pull"
+alias gpl="git pull"
+alias gpll="git pull"
+alias pll="git pull"
+alias pull="git pull"
+alias gph="git push"
+alias gpsh="git push"
+alias psh="git push"
+alias push="git push"
+alias gpp="git pull; git push"
 alias gs="git status"
 alias gb="git branch"
 alias gch="git checkout"
 alias gcb="git checkout -b"
-alias gm="git merge"
+alias gchb="git checkout -b"
 alias gd="git diff"
+alias gdt="git difftool"
+alias gm="git merge"
+alias gmt="git mergetool"
 alias gk="gitk"
 alias gsl="git stash list"
-alias gss="git stash save"
+alias gsp="git stash save -p"
+alias gss="git add .; git stash save"
 alias gsp="git stash pop"
-alias gh="git push origin master; git checkout gh-pages; git rebase master;
-git push origin gh-pages; git checkout master"
+alias gsa="git stash apply"
+alias gsd="git stash drop"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
+
 # dev
+alias eh="sudo nano /etc/hosts"
 alias jb="jekyll build -w"
 alias js="jekyll serve -w"
 alias bdi="bundle install"
@@ -219,6 +255,21 @@ alias vh="vagrant halt 4f83841"
 alias vr="vagrant reload 4f83841"
 alias ve="vagrant ssh 4f83841"
 alias vp="vagrant reload 4f83841 --provision"
+
+# mj
+alias qa="ssh qa.musejam.com"
+alias prod="ssh musejam.com"
+# -----------------------------------------------------------------------------
+
+
+# Functions -------------------------------------------------------------------
+# git
+function git-remote-all()
+{
+    while read -r name url method
+    do git config --add remote.all.url "$url"
+    done < <(git remote -v | awk '!/^all/ && /push/')
+}
 # -----------------------------------------------------------------------------
 
 
@@ -227,5 +278,3 @@ source ~/.profile
 source ~/.tmuxinator/tmuxinator.zsh
 source ~/z.sh
 # -----------------------------------------------------------------------------
-
-#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

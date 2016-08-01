@@ -4,10 +4,12 @@
     insertNewlinesForUseStatements: true
     verboseErrors: true
   "atom-beautify":
-    _analyticsUserId: "d63c1e81-f0c2-47b0-8116-87e720539296"
-    html_indent_inner_html: true
-    html_indent_scripts: "separate"
-    html_max_preserve_newlines: 2
+    general:
+      _analyticsUserId: "d63c1e81-f0c2-47b0-8116-87e720539296"
+    html:
+      indent_inner_html: true
+      indent_scripts: "separate"
+      max_preserve_newlines: 2
   "atom-material-ui":
     colors:
       abaseColor:
@@ -21,6 +23,7 @@
       fontSize: 14
     tabs:
       compactTabs: true
+      tintedTabBar: true
     treeView:
       compactList: true
     ui:
@@ -44,10 +47,13 @@
       "markdown-preview"
       "minimap"
       "minimap-highlight-selected"
-      "autocomplete-css"
       "status-bar"
       "tabs"
-      "atom-autocomplete-php"
+      "terminal-status"
+      "todo-show"
+      "travis-ci-status"
+      "php-cs-fixer"
+      "php-integrator-linter"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [
@@ -77,13 +83,20 @@
     userId: "a7118940-a776-5e76-08c6-0311f9b89de7"
   "file-icons":
     forceShow: true
+  "genesis-ui":
+    distractionFree:
+      hideSpotified: true
   minimap:
     plugins:
       "highlight-selected": true
     scrollAnimation: true
     scrollAnimationDuration: 250
     textOpacity: 0.5
-  "one-dark-ui": {}
+  "one-dark-ui":
+    layoutMode: "Compact"
+  "php-integrator-linter":
+    showUnknownClasses: false
+    validateDocblockCorrectness: false
   pigments:
     groupPaletteColors: "by file"
     markerType: "dot"
@@ -91,8 +104,17 @@
   "project-manager":
     environmentSpecificProjects: true
     sortBy: "title"
+  "remote-atom":
+    keep_alive: true
+    launch_at_startup: true
   "save-session":
     dataSaveFolder: "/Users/rahulthakur/.atom/packages/save-session/projects"
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    syncHorizontalScroll: true
   "status-bar": {}
   tabs:
     enableVcsColoring: true
@@ -105,5 +127,6 @@
   "travis-ci-status": {}
   "tree-view":
     hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false

@@ -9,12 +9,12 @@
 	ui = true
 
 [color "status"]
-	header = normal dim
-	added = green bold
-	updated = yellow
-	changed = yellow
-	untracked = red bold
-	nobranch = red
+	header = black bold
+	added = blue bold
+	updated = green bold
+	changed = red bold
+	untracked = magenta bold
+	nobranch = red dim
 
 [color "grep"]
 	match = green bold
@@ -26,13 +26,13 @@
 	error = red bold
 
 [color "diff"]
-    meta = white dim black dim
-    frag = cyan bold
-	plain = normal dim
+	meta = magenta
+	frag = blue bold
+	plain = black bold
 	old = red
 	new = green
 	commit = yellow
-	whitespace = normal black dim
+	whitespace = normal reverse
 
 [color "branch"]
 	current = green bold
@@ -47,23 +47,23 @@
 	default = current
 
 [diff]
-    tool = meld
+	tool = meld
 
 [difftool]
-    prompt = false
+	prompt = false
 
 [difftool "meld"]
-    cmd = meld "$LOCAL" "$REMOTE" > /dev/null 2>&1
+	cmd = meld "$LOCAL" "$REMOTE" > /dev/null 2>&1
 
 [merge]
 	ff = true
-    conflictstyle = diff3
-    tool = meld
+	conflictstyle = diff3
+	tool = meld
 
 [mergetool "meld"]
-    # cmd = meld "$BASE" "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED" > /dev/null 2>&1
-    cmd = meld --diff "$BASE" "$LOCAL" --diff "$BASE" "$REMOTE" --diff "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED" > /dev/null 2>&1
-    trustExitCode = true
+	# cmd = meld "$BASE" "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED" > /dev/null 2>&1
+	cmd = meld --diff "$BASE" "$LOCAL" --diff "$BASE" "$REMOTE" --diff "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED" > /dev/null 2>&1
+	trustExitCode = true
 
 [filter "media"]
 	clean = git-media-clean %f

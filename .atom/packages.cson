@@ -19,8 +19,6 @@ packages: [
   "language-liquid"
   "markdown-preview-plus"
   "merge-conflicts"
-  "minimap"
-  "minimap-highlight-selected"
   "package-sync"
   "php-cs-fixer"
   "php-debug"
@@ -28,8 +26,6 @@ packages: [
   "save-session"
   "svg-preview"
   "tabs-to-spaces"
-  "terminal-status"
   "todo-show"
   "trailing-spaces"
-  "travis-ci-status"
 ]

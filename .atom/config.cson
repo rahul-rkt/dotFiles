@@ -13,16 +13,23 @@
   "atom-material-ui":
     colors:
       abaseColor:
-        red: 96
-        green: 125
-        blue: 139
+        red: 255
+        green: 167
+        blue: 38
+        alpha: 1
+      accentColor:
+        red: 159
+        green: 105
+        blue: 24
         alpha: 1
       genAccent: true
-      predefinedColor: "Blue Grey"
+      paintCursor: true
+      predefinedColor: "Orange"
     fonts:
       fontSize: 14
     tabs:
       compactTabs: true
+      noTabMinWidth: true
       tintedTabBar: true
     treeView:
       compactList: true
@@ -43,6 +50,17 @@
     preferredFormat: "HEX"
     uppercaseColorValues: true
   core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     disabledPackages: [
       "markdown-preview"
       "minimap"
@@ -66,7 +84,7 @@
     ]
     themes: [
       "atom-material-ui"
-      "base16-ocean-dark-syntax-theme"
+      "gruvbox-plus-syntax"
     ]
   editor:
     backUpBeforeSaving: true
@@ -83,15 +101,47 @@
     userId: "a7118940-a776-5e76-08c6-0311f9b89de7"
   "file-icons":
     forceShow: true
+  "file-watcher":
+    promptWhenFileHasChangedOnDisk: false
   "genesis-ui":
     distractionFree:
       hideSpotified: true
+  "gruvbox-plus-syntax": {}
   minimap:
     plugins:
       "highlight-selected": true
     scrollAnimation: true
     scrollAnimationDuration: 250
     textOpacity: 0.5
+  nuclide:
+    installRecommendedPackages: true
+    "nuclide-adb-logcat": {}
+    "nuclide-arcanist": {}
+    "nuclide-buck": {}
+    "nuclide-clang-atom": {}
+    "nuclide-code-format":
+      formatOnSave: true
+    "nuclide-console": {}
+    "nuclide-datatip": {}
+    "nuclide-debugger-hhvm": {}
+    "nuclide-debugger-lldb-client": {}
+    "nuclide-distraction-free-mode":
+      hideStatusBar: true
+      hideToolBar: true
+    "nuclide-file-tree":
+      revealFileOnSwitch: true
+    "nuclide-flow":
+      enableStructuredTypeHints: true
+    "nuclide-format-js": {}
+    "nuclide-hack": {}
+    "nuclide-health": {}
+    "nuclide-home":
+      showHome: false
+    "nuclide-ios-simulator-logs": {}
+    "nuclide-ocaml": {}
+    "nuclide-python": {}
+    "nuclide-react-native": {}
+    "nuclide-working-sets": {}
   "one-dark-ui":
     layoutMode: "Compact"
   "php-integrator-linter":
@@ -122,6 +172,8 @@
     usePreviewTabs: true
   "terminal-status":
     WindowHeight: 10
+  "tool-bar":
+    visible: false
   "trailing-spaces":
     enableForIndentation: true
   "travis-ci-status": {}
@@ -130,3 +182,15 @@
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
+".hack.html.text":
+  editor:
+    softWrapHangingIndent: 2
+    tabLength: 4
+".hackfragment.source":
+  editor:
+    softWrapHangingIndent: 2
+    tabLength: 4
+".hg-commit.text":
+  editor:
+    softWrapHangingIndent: 2
+    tabLength: 4

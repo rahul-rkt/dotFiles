@@ -102,7 +102,7 @@ function steeef_precmd {
 add-zsh-hook precmd steeef_precmd
 
 # make prompts
-PROMPT_CODE="%B%(?:%{$pgreen%}❯${PR_RST} :%{$pred%}❯${PR_RST}%b )"
+PROMPT_CODE="%(?:%{$pgreen%}%B❯%b${PR_RST} :%{$pred%}%B❯%b${PR_RST} )"
 TIMESTAMP="%{$vlow%}%B%D{%a %d %b},%b${PR_RST} %{$low%}%D{%L:%M:%S%p}${PR_RST}"
 TERM_WIDTH="(${COLUMNS} - 4)"
 FILLER="-"

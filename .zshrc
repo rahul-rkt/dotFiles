@@ -89,6 +89,9 @@ export LSCOLORS=ExFxcxdxbxexexabagacad
 # grep colours
 export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="1;32"
+
+# display usage statistics for commands running > 5 sec.
+REPORTTIME=5
 # -----------------------------------------------------------------------------
 
 
@@ -141,9 +144,9 @@ autoload -U compinit &&
 
     # completion presentation styles
     zstyle ':completion:*:options' auto-description '%d'
-    zstyle ':completion:*:descriptions' format $'\e[0;37m -- %d --\e[0;0m'
-    zstyle ':completion:*:messages'     format $'\e[0;37m -- %d --\e[0;0m'
-    zstyle ':completion:*:warnings'     format $'\e[0;33m -- No matches found --\e[0;0m'
+    zstyle ':completion:*:descriptions' format $'\e[0;37m --- %d ---\e[0;0m'
+    zstyle ':completion:*:messages'     format $'\e[0;37m --- %d ---\e[0;0m'
+    zstyle ':completion:*:warnings'     format $'\e[0;33m --- no matches ---\e[0;0m'
 
     # ignore hidden files by default
     zstyle ':completion:*:(all-|other-|)files'  ignored-patterns '*/.*'
@@ -153,15 +156,15 @@ autoload -U compinit &&
     # don't complete completion functions/widgets
     zstyle ':completion:*:functions' ignored-patterns '_*'
 
-    # # don't complete uninteresting users
-    # zstyle ':completion:*:*:*:users' ignored-patterns adm amanda apache avahi \
-    #   beaglidx bin cacti canna clamav daemon dbus distcache dovecot junkbust  \
-    #   games gdm gkrellmd gopher hacluster haldaemon halt hsqldb ident ftp fax \
-    #   ldap lp mail mailman mailnull mldonkey mysql nagios named netdump news  \
-    #   nfsnobody nobody nscd ntp nut nx openvpn operator pcap postfix postgres \
-    #   privoxy pulse pvm quagga radvd rpc rpcuser rpm shutdown squid sshd sync \
-    #   uucp vcsa xfs www-data avahi-autoipd gitblit http rtkit sabnzbd usbmux  \
-    #   sickbeard
+    # don't complete uninteresting users
+    zstyle ':completion:*:*:*:users' ignored-patterns adm amanda apache avahi \
+      beaglidx bin cacti canna clamav daemon dbus distcache dovecot junkbust  \
+      games gdm gkrellmd gopher hacluster haldaemon halt hsqldb ident ftp fax \
+      ldap lp mail mailman mailnull mldonkey mysql nagios named netdump news  \
+      nfsnobody nobody nscd ntp nut nx openvpn operator pcap postfix postgres \
+      privoxy pulse pvm quagga radvd rpc rpcuser rpm shutdown squid sshd sync \
+      uucp vcsa xfs www-data avahi-autoipd gitblit http rtkit sabnzbd usbmux  \
+      sickbeard
 
     # Show ignored patterns if needed.
     zstyle '*' single-ignored show
@@ -172,7 +175,7 @@ autoload -U compinit &&
 
     # kill style
     zstyle ':completion:*:*:kill:*' command 'ps -a -w -w -u $USER -o pid,cmd --sort=-pid'
-    zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=1;31=1;35"
+    zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=1;31=1;33"
 
     # rm/cp/mv style
     zstyle ':completion:*:(rm|mv|cp):*' ignore-line yes

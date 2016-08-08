@@ -16,46 +16,46 @@ autoload -Uz add-zsh-hook # adds zsh hook support
 autoload -Uz vcs_info # adds zsh vcs support
 
 # configurables
-PROMPT_CODE="❯" # the prompt
-GIT_MARKER="●" # the marker for git status changes
-SEPARATOR_FILLER="-" # the separator line filler
+R_PROMPT_CODE="❯" # the prompt
+R_GIT_MARKER="●" # the marker for git status changes
+R_SEPARATOR_FILLER="-" # the separator line filler
 # -----------------------------------------------------------------------------
 
 
 # aesthetics ------------------------------------------------------------------
 # colours based on available range
 if [ $terminfo[colors] -ge 256 ]; then
-    black="%F{237}"
-    grey="%F{242}"
-    red="%F{124}"
-    green="%F{71}"
-    blue="%F{27}"
-    yellow="%F{214}"
-    magenta="%F{175}"
-    cyan="%F{81}"
-    orange="%F{208}"
-    purple="%F{167}"
-    aqua="%F{112}"
+    R_C_BLACK="%F{237}"
+    R_C_GREY="%F{242}"
+    R_C_RED="%F{124}"
+    R_C_GREEN="%F{71}"
+    R_C_BLUE="%F{27}"
+    R_C_YELLOW="%F{214}"
+    R_C_MAGENTA="%F{175}"
+    R_C_CYAN="%F{81}"
+    R_C_ORANGE="%F{208}"
+    R_C_PURPLE="%F{167}"
+    R_C_AQUA="%F{112}"
 else
-    black="%F{black}"
-    grey="%F{white}"
-    red="%F{red}"
-    green="%F{green}"
-    blue="%F{blue}"
-    yellow="%F{yellow}"
-    magenta="%F{magenta}"
-    cyan="%F{blue}"
-    orange="%F{yellow}"
-    purple="%F{red}"
-    aqua="%F{cyan}"
+    R_C_BLACK="%F{black}"
+    R_C_GREY="%F{white}"
+    R_C_RED="%F{red}"
+    R_C_GREEN="%F{green}"
+    R_C_BLUE="%F{blue}"
+    R_C_YELLOW="%F{yellow}"
+    R_C_MAGENTA="%F{magenta}"
+    R_C_CYAN="%F{blue}"
+    R_C_ORANGE="%F{yellow}"
+    R_C_PURPLE="%F{red}"
+    R_C_AQUA="%F{cyan}"
 fi
 
-# styles
-bold="%B"
-normal="%b"
+# foreground background reset
+R_C_RESET="%f"
 
-# reset
-reset="%f"
+# styles
+R_S_BOLD="%B"
+R_S_NORMAL="%b"
 # -----------------------------------------------------------------------------
 
 
@@ -67,40 +67,42 @@ zstyle ':vcs_info:git:prompt:*' check-for-changes true
 
 # define formats
 # %b = branchname # %u = unstagedstr # %c = stagedstr # %a = action
-GIT_STAGED_FORMAT="${green}${GIT_MARKER}"
-GIT_UNSTAGED_FORMAT="${red}${GIT_MARKER}"
-GIT_UNTRACKED_FORMAT="${magenta}${GIT_MARKER}"
-GIT_BRANCH_FORMAT_REFERENCE="${cyan}%b%c%u"
-GIT_BRANCH_FORMAT=${GIT_BRANCH_FORMAT_REFERENCE}
-GIT_ACTION_FORMAT="${aqua}%a:u${grey}::"
-GIT_INFO_OPEN="${grey}("
-GIT_INFO_CLOSE="${grey})${reset}"
+R_GIT_STAGED_FORMAT="${R_C_GREEN}${R_GIT_MARKER}"
+R_GIT_UNSTAGED_FORMAT="${R_C_RED}${R_GIT_MARKER}"
+R_GIT_UNTRACKED_FORMAT="${R_C_MAGENTA}${R_GIT_MARKER}"
+R_GIT_BRANCH_FORMAT_REFERENCE="${R_C_CYAN}%b%c%u"
+R_GIT_BRANCH_FORMAT=${R_GIT_BRANCH_FORMAT_REFERENCE}
+R_GIT_ACTION_FORMAT="${R_C_AQUA}%a:u${R_C_GREY}::"
+R_GIT_INFO_OPEN="${R_C_GREY}("
+R_GIT_INFO_CLOSE="${R_C_GREY})${R_C_RESET}"
 
 # set formats
-zstyle ':vcs_info:git:prompt:*' unstagedstr "${GIT_UNSTAGED_FORMAT}"
-zstyle ':vcs_info:git:prompt:*' stagedstr "${GIT_STAGED_FORMAT}"
-zstyle ':vcs_info:git:prompt:*' formats "${GIT_INFO_OPEN}${GIT_BRANCH_FORMAT}${GIT_INFO_CLOSE}"
-zstyle ':vcs_info:git:prompt:*' actionformats "${GIT_INFO_OPEN}${GIT_ACTION_FORMAT}${GIT_BRANCH_FORMAT}${GIT_INFO_CLOSE}"
+zstyle ':vcs_info:git:prompt:*' unstagedstr "${R_GIT_UNSTAGED_FORMAT}"
+zstyle ':vcs_info:git:prompt:*' stagedstr "${R_GIT_STAGED_FORMAT}"
+zstyle ':vcs_info:git:prompt:*' formats "${R_GIT_INFO_OPEN}${R_GIT_BRANCH_FORMAT}${R_GIT_INFO_CLOSE}"
+zstyle ':vcs_info:git:prompt:*' actionformats "${R_GIT_INFO_OPEN}${R_GIT_ACTION_FORMAT}${R_GIT_BRANCH_FORMAT}${R_GIT_INFO_CLOSE}"
 zstyle ':vcs_info:git:prompt:*' nvcsformats ""
 # -----------------------------------------------------------------------------
 
 
 # make prompt -----------------------------------------------------------------
-TERMINAL_WIDTH="(${COLUMNS} - 4)"
-local separator="\${(l.(${TERMINAL_WIDTH})..${SEPARATOR_FILLER}.)}"
-PROMPT_SEPARATOR_LINE="  ${black}${(e)separator}${reset}"
+R_TERMINAL_WIDTH="(${COLUMNS} - 4)"
+local separator="\${(l.(${R_TERMINAL_WIDTH})..${R_SEPARATOR_FILLER}.)}"
+R_PROMPT_SEPARATOR_LINE="  ${R_C_BLACK}${(e)separator}${R_C_RESET}"
 
-PROMPT_INFO_LINE="${black}${PROMPT_CODE} ${purple}%n ${grey}at ${magenta}%m ${grey}in ${aqua}%~${reset} $vcs_info_msg_0_"
+R_PROMPT_INFO_LINE="${R_C_BLACK}${R_PROMPT_CODE} ${R_C_PURPLE}%n ${R_C_GREY}at ${R_C_MAGENTA}%m ${R_C_GREY}in ${R_C_AQUA}%~${R_C_RESET} $vcs_info_msg_0_"
 
-PROMPT_LINE="%(?.${green}.${red})${PROMPT_CODE}${reset} "
+R_PROMPT_LINE="%(?.${R_C_GREEN}.${R_C_RED})${R_PROMPT_CODE}${R_C_RESET} "
 
-RPROMPT_TIMESTAMP="${black}${bold}%D{%a %d %b},${normal} ${grey}%D{%L:%M:%S%p}${reset}"
+# set left prompt
+PROMPT=$'${R_PROMPT_SEPARATOR_LINE}
+${R_PROMPT_INFO_LINE}
+${R_PROMPT_LINE}'
 
-PROMPT=$'${PROMPT_SEPARATOR_LINE}
-${PROMPT_INFO_LINE}
-${PROMPT_LINE}'
+R_RPROMPT_TIMESTAMP="${R_C_BLACK}${R_S_BOLD}%D{%a %d %b},${R_S_NORMAL} ${R_C_GREY}%D{%L:%M:%S%p}${R_C_RESET}"
 
-RPROMPT=$'${RPROMPT_TIMESTAMP} '
+# set right prompt
+RPROMPT=$'${R_RPROMPT_TIMESTAMP} '
 # -----------------------------------------------------------------------------
 
 
@@ -123,10 +125,10 @@ function r_precmd
     # update separator line : for terminal width change
     # check if the width has actually changed
     local this_width="(${COLUMNS} - 4)"
-    if [ ${this_width} != ${TERMINAL_WIDTH} ]; then
-        TERMINAL_WIDTH=${this_width}
-        local separator="\${(l.(${TERMINAL_WIDTH})..${SEPARATOR_FILLER}.)}"
-        PROMPT_SEPARATOR_LINE="  ${black}${(e)separator}${reset}"
+    if [ ${this_width} != ${R_TERMINAL_WIDTH} ]; then
+        R_TERMINAL_WIDTH=${this_width}
+        local separator="\${(l.(${R_TERMINAL_WIDTH})..${R_SEPARATOR_FILLER}.)}"
+        R_PROMPT_SEPARATOR_LINE="  ${R_C_BLACK}${(e)separator}${R_C_RESET}"
     fi
 
     # update info line : for git info
@@ -135,14 +137,14 @@ function r_precmd
         # explicitly check for untracked files since vcs_info will not
         local is_untracked="$(git status --porcelain | grep "^??" | wc -l)"
         if [ ${is_untracked} -ge 1 ]; then
-            GIT_BRANCH_FORMAT="${GIT_BRANCH_FORMAT_REFERENCE}${GIT_UNTRACKED_FORMAT}"
+            R_GIT_BRANCH_FORMAT="${R_GIT_BRANCH_FORMAT_REFERENCE}${R_GIT_UNTRACKED_FORMAT}"
         else
-            GIT_BRANCH_FORMAT="${GIT_BRANCH_FORMAT_REFERENCE}"
+            R_GIT_BRANCH_FORMAT="${R_GIT_BRANCH_FORMAT_REFERENCE}"
         fi
-        zstyle ':vcs_info:git:prompt:*' formats "${GIT_INFO_OPEN}${GIT_BRANCH_FORMAT}${GIT_INFO_CLOSE}"
+        zstyle ':vcs_info:git:prompt:*' formats "${R_GIT_INFO_OPEN}${R_GIT_BRANCH_FORMAT}${R_GIT_INFO_CLOSE}"
     fi
     vcs_info 'prompt'
-    PROMPT_INFO_LINE="${black}${PROMPT_CODE} ${purple}%n ${grey}at ${magenta}%m ${grey}in ${aqua}%~${reset} ${vcs_info_msg_0_}"
+    R_PROMPT_INFO_LINE="${R_C_BLACK}${R_PROMPT_CODE} ${R_C_PURPLE}%n ${R_C_GREY}at ${R_C_MAGENTA}%m ${R_C_GREY}in ${R_C_AQUA}%~${R_C_RESET} ${vcs_info_msg_0_}"
 }
 add-zsh-hook precmd r_precmd
 # -----------------------------------------------------------------------------

@@ -17,6 +17,7 @@ autoload -Uz vcs_info # adds zsh vcs support
 
 # configurables
 R_PROMPT_CODE="❯" # the prompt
+R_PROMPT_CODE_PRIVILEGED="$" # the privileged prompt
 R_GIT_MARKER="●" # the marker for git status changes
 R_SEPARATOR_FILLER="-" # the separator line filler
 # -----------------------------------------------------------------------------
@@ -154,7 +155,7 @@ add-zsh-hook precmd r_precmd
 # make prompt -----------------------------------------------------------------
 r_chpwd # builds R_PWD for R_PROMPT_INFO_LINE
 r_precmd # builds R_PROMPT_SEPARATOR_LINE & R_PROMPT_INFO_LINE
-R_PROMPT_LINE="%(?.${R_C_GREEN}.${R_C_RED})%(!.$.${R_PROMPT_CODE})${R_C_RESET} "
+R_PROMPT_LINE="%(?.${R_C_GREEN}.${R_C_RED})%(!.${R_PROMPT_CODE_PRIVILEGED}.${R_PROMPT_CODE})${R_C_RESET} "
 R_RPROMPT_TIMESTAMP="${R_C_GREY}${R_S_BOLD}%D{%a %d %b},${R_S_NORMAL} ${R_C_WHITE}%D{%L:%M:%S%p}${R_C_RESET}"
 
 # set left prompt

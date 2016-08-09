@@ -20,6 +20,7 @@ R_PROMPT_CODE="❯" # the prompt
 R_PROMPT_CODE_PRIVILEGED="$" # the privileged prompt
 R_GIT_MARKER="●" # the marker for git status changes
 R_SEPARATOR_FILLER="-" # the separator line filler
+R_MAX_PWD_DEPTH=5 # max number of dir to show before shortening the path, ~ excluded!
 # -----------------------------------------------------------------------------
 
 
@@ -101,23 +102,19 @@ r_chpwd()
     local pwd="${PWD/#$HOME/~}"
     local -a pwd_list;pwd_list=(${(ps:/:)pwd})
     local pwd_count="${#pwd_list[@]}"
-
-    local -a pwd_c;pwd_c=(${R_C_WHITE} ${R_C_GREY} ${R_C_BLACK})
     local s="${R_C_ORANGE}/"
 
-    pwd="${R_C_AQUA}${pwd_list[${pwd_count}]}${R_S_NORMAL}"
-
-    for (( i=${pwd_count}-1; i>${pwd_count}-3 && i>0; i-- )); do
-        pwd="${pwd_c[${pwd_count}-${i}]}${pwd_list[${i}]}${s}${pwd}"
+    pwd="${R_C_AQUA}${pwd_list[${pwd_count}]}"
+    for (( i=${pwd_count}-1; i>${pwd_count}-${R_MAX_PWD_DEPTH} && i>0; i-- )); do
+        pwd="${R_C_GREY}${pwd_list[${i}]}${s}${pwd}"
     done
-
-    if [ ${pwd_count} -ge 5 ]; then
-        pwd="${R_C_BLACK}${pwd_list[1]}${s}${R_C_BLACK}..${s}${pwd}"
-    elif [ ${pwd_count} -ge 4 ]; then
-        pwd="${R_C_BLACK}${pwd_list[1]}${s}${pwd}"
+    if [[ ${pwd_count} -ge ${R_MAX_PWD_DEPTH}+2 ]]; then
+        pwd="${R_C_GREY}${pwd_list[1]}${s}${R_C_BLACK}..${s}${pwd}"
+    elif [[ ${pwd_count} -ge ${R_MAX_PWD_DEPTH}+1 ]]; then
+        pwd="${R_C_GREY}${pwd_list[1]}${s}${pwd}"
     fi
 
-    R_PWD="${R_S_BOLD}${pwd}"
+    R_PWD="${R_S_BOLD}${pwd}${R_S_NORMAL}"
 }
 add-zsh-hook chpwd r_chpwd
 

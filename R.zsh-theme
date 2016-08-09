@@ -30,22 +30,24 @@ if [ $terminfo[colors] -ge 256 ]; then
     R_C_WHITE="%F{246}"
     R_C_RED="%F{124}"
     R_C_GREEN="%F{71}"
-    R_C_BLUE="%F{109}"
-    R_C_YELLOW="%F{136}"
+    R_C_BLUE="%F{38}"
+    R_C_YELLOW="%F{214}"
     R_C_MAGENTA="%F{175}"
-    R_C_CYAN="%F{81}"
+    R_C_CYAN="%F{87}"
+    R_C_PURPLE="%F{135}"
     R_C_ORANGE="%F{208}"
-    R_C_AQUA="%F{108}"
+    R_C_AQUA="%F{114}"
 else
     R_C_BLACK="%F{black}"
-    R_C_GREY="%F{grey}"
+    R_C_GREY="%F{black}"
     R_C_WHITE="%F{white}"
     R_C_RED="%F{red}"
     R_C_GREEN="%F{green}"
     R_C_BLUE="%F{blue}"
     R_C_YELLOW="%F{yellow}"
     R_C_MAGENTA="%F{magenta}"
-    R_C_CYAN="%F{blue}"
+    R_C_CYAN="%F{cyan}"
+    R_C_PURPLE="%F{magenta}"
     R_C_ORANGE="%F{yellow}"
     R_C_AQUA="%F{green}"
 fi
@@ -72,7 +74,7 @@ R_GIT_UNSTAGED_FORMAT="${R_C_RED}${R_GIT_MARKER}"
 R_GIT_UNTRACKED_FORMAT="${R_C_MAGENTA}${R_GIT_MARKER}"
 R_GIT_BRANCH_FORMAT_REFERENCE="${R_C_CYAN}%b%c%u"
 R_GIT_BRANCH_FORMAT=${R_GIT_BRANCH_FORMAT_REFERENCE}
-R_GIT_ACTION_FORMAT="${R_C_AQUA}%a:u${R_C_GREY}::"
+R_GIT_ACTION_FORMAT="${R_C_YELLOW}ongoing-%a${R_C_GREY}::"
 R_GIT_INFO_OPEN="${R_C_GREY}("
 R_GIT_INFO_CLOSE="${R_C_GREY})${R_C_RESET}"
 
@@ -143,7 +145,7 @@ function r_precmd
         zstyle ':vcs_info:git:prompt:*' formats "${R_GIT_INFO_OPEN}${R_GIT_BRANCH_FORMAT}${R_GIT_INFO_CLOSE}"
     fi
     vcs_info 'prompt'
-    R_PROMPT_INFO_LINE="${R_C_BLACK}${R_PROMPT_CODE} ${R_S_BOLD}${R_C_BLUE}%n${R_S_NORMAL} ${R_C_GREY}at ${R_C_YELLOW}%m ${R_C_GREY}in ${R_PWD} ${vcs_info_msg_0_}"
+    R_PROMPT_INFO_LINE="${R_C_BLACK}${R_PROMPT_CODE} ${R_S_BOLD}${R_C_BLUE}%n${R_S_NORMAL} ${R_C_GREY}at ${R_C_PURPLE}%m ${R_C_GREY}in ${R_PWD} ${vcs_info_msg_0_}"
 }
 add-zsh-hook precmd r_precmd
 # -----------------------------------------------------------------------------
@@ -152,7 +154,7 @@ add-zsh-hook precmd r_precmd
 # make prompt -----------------------------------------------------------------
 r_chpwd # builds R_PWD for R_PROMPT_INFO_LINE
 r_precmd # builds R_PROMPT_SEPARATOR_LINE & R_PROMPT_INFO_LINE
-R_PROMPT_LINE="%(?.${R_C_GREEN}.${R_C_RED})${R_PROMPT_CODE}${R_C_RESET} "
+R_PROMPT_LINE="%(?.${R_C_GREEN}.${R_C_RED})%(!.$.${R_PROMPT_CODE})${R_C_RESET} "
 R_RPROMPT_TIMESTAMP="${R_C_GREY}${R_S_BOLD}%D{%a %d %b},${R_S_NORMAL} ${R_C_WHITE}%D{%L:%M:%S%p}${R_C_RESET}"
 
 # set left prompt

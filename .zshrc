@@ -53,7 +53,7 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*) Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/ Example format: plugins=(rails git textmate ruby
 # lighthouse) Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-syntax-highlighting zsh-completions)
+plugins=(zsh-syntax-highlighting zsh-completions zsh-autosuggestions zsh-256color)
 # atom brew bundler osx git github git-flow tmux tmuxinator zsh-syntax-highlighting zsh-completions
 
 source $ZSH/oh-my-zsh.sh
@@ -92,6 +92,11 @@ export GREP_COLOR="1;32"
 
 # display usage statistics for commands running > 5 sec.
 REPORTTIME=5
+
+# zsh autosuggest
+bindkey '^[' autosuggest-execute
+bindkey '^]' autosuggest-clear
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 # -----------------------------------------------------------------------------
 
 

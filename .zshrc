@@ -77,10 +77,7 @@ export EDITOR="vim"
 export TZ=Asia/Kolkata
 
 # path
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:$HOME/.composer/vendor/bin:$HOME/.rvm/bin"
-
-# homebrew fix
-export HOMEBREW_GITHUB_API_TOKEN=42e428f759af0cee27ce481dec43e535d198af62
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:$HOME/.composer/vendor/bin:$HOME/.rvm/bin:$(npm bin)"
 
 # ls colours
 export LSCOLORS=ExFxcxdxbxexexabagacad
@@ -93,8 +90,7 @@ export GREP_COLOR="1;32"
 REPORTTIME=5
 
 # zsh autosuggest
-bindkey '^[' autosuggest-clear
-bindkey '^]' autosuggest-execute
+bindkey '^\' autosuggest-execute
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 # -----------------------------------------------------------------------------
 

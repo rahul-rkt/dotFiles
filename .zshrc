@@ -77,7 +77,7 @@ export EDITOR="vim"
 export TZ=Asia/Kolkata
 
 # path
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:$HOME/.composer/vendor/bin:$HOME/.rvm/bin:$(npm bin)"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:$HOME/.composer/vendor/bin:$HOME/.rvm/bin:./node_modules/.bin"
 
 # ls colours
 export LSCOLORS=ExFxcxdxbxexexabagacad

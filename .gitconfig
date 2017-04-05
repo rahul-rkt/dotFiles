@@ -4,6 +4,8 @@
 
 [core]
 	excludesfile = ~/.gitignore_global
+	autocrlf = input
+	safecrlf = true
 
 [color]
 	ui = true

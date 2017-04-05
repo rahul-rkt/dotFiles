@@ -1,5 +1,7 @@
 "*":
-  "advanced-open-file": {}
+  "advanced-open-file":
+    createDirectories: true
+    createFileInstantly: true
   "atom-autocomplete-php":
     insertNewlinesForUseStatements: true
     verboseErrors: true
@@ -12,19 +14,11 @@
       max_preserve_newlines: 2
   "atom-material-ui":
     colors:
-      abaseColor:
-        red: 255
-        green: 167
-        blue: 38
-        alpha: 1
-      accentColor:
-        red: 159
-        green: 105
-        blue: 24
-        alpha: 1
+      abaseColor: "#756c84"
+      accentColor: "#8ea960"
       genAccent: true
       paintCursor: true
-      predefinedColor: "Orange"
+      predefinedColor: "Purple"
     fonts:
       fontSize: 14
     tabs:
@@ -38,11 +32,13 @@
       panelShadows: true
   "atom-minify": {}
   "auto-copyright":
-    owner: "Rahul Thakur"
-    template: "&copy; 2015 R (r@rahulthakur.me)"
+    owner: "R (r@rahulthakur.me)"
+    template: "Copyright (c) %y by %o."
   "auto-update-packages": {}
   "autoclose-html": {}
   "autocomplete-php": {}
+  "autocomplete-plus":
+    backspaceTriggersAutocomplete: true
   autoprefixer: {}
   autosave:
     enabled: true
@@ -50,6 +46,7 @@
     preferredFormat: "HEX"
     uppercaseColorValues: true
   core:
+    autoHideMenuBar: true
     customFileTypes:
       "source.ini": [
         ".buckconfig"
@@ -68,10 +65,15 @@
       "status-bar"
       "tabs"
       "terminal-status"
-      "todo-show"
       "travis-ci-status"
-      "php-cs-fixer"
+      "php-integrator-annotations"
+      "php-integrator-autocomplete-plus"
+      "php-integrator-base"
+      "php-integrator-call-tips"
       "php-integrator-linter"
+      "php-integrator-navigation"
+      "php-integrator-refactoring"
+      "php-integrator-tooltips"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [
@@ -82,15 +84,17 @@
       ".sass-cache"
       ".idea .brackets.json"
     ]
+    telemetryConsent: "no"
     themes: [
       "atom-material-ui"
-      "gruvbox-plus-syntax"
+      "gloom"
     ]
   editor:
     backUpBeforeSaving: true
-    fontFamily: "Andale Mono"
+    fontFamily: "Mononoki"
+    fontSize: 11
     invisibles: {}
-    lineHeight: 2
+    lineHeight: 3
     scrollPastEnd: true
     showIndentGuide: true
     softWrap: true
@@ -113,6 +117,8 @@
     scrollAnimation: true
     scrollAnimationDuration: 250
     textOpacity: 0.5
+  "nord-atom-ui":
+    darkerFormFocusEffect: true
   nuclide:
     installRecommendedPackages: true
     "nuclide-adb-logcat": {}
@@ -144,9 +150,17 @@
     "nuclide-working-sets": {}
   "one-dark-ui":
     layoutMode: "Compact"
+  "package-sync":
+    createOnChange: true
+  "php-integrator-autocomplete-plus":
+    disableBuiltinAutocompletion: false
+  "php-integrator-base":
+    insertNewlinesForUseStatements: true
   "php-integrator-linter":
     showUnknownClasses: false
     validateDocblockCorrectness: false
+  "php-integrator-symbol-viewer":
+    defaultShowInherited: true
   pigments:
     groupPaletteColors: "by file"
     markerType: "dot"
@@ -154,6 +168,8 @@
   "project-manager":
     environmentSpecificProjects: true
     sortBy: "title"
+  react:
+    enabledForAllJavascriptFiles: true
   "remote-atom":
     keep_alive: true
     launch_at_startup: true
@@ -172,6 +188,9 @@
     usePreviewTabs: true
   "terminal-status":
     WindowHeight: 10
+  "todo-show":
+    openListInDirection: "down"
+    sortBy: "Path"
   "tool-bar":
     visible: false
   "trailing-spaces":
@@ -182,6 +201,9 @@
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
+".coffee.jsx.source":
+  editor:
+    autoIndentOnPaste: true
 ".hack.html.text":
   editor:
     softWrapHangingIndent: 2

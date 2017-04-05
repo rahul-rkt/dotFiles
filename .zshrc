@@ -9,7 +9,7 @@
 
 # OH-MY-ZSH -------------------------------------------------------------------
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/rahulthakur/.oh-my-zsh
+export ZSH=/home/r/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,7 +53,7 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*) Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/ Example format: plugins=(rails git textmate ruby
 # lighthouse) Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-syntax-highlighting zsh-completions zsh-autosuggestions zsh-256color)
+plugins=(git redis-cli colored-man-pages command-not-found web-search safe-paste history-substring-search last-working-dir extract dircycle colorize battery compleat zsh-syntax-highlighting zsh-256color zsh-completions zsh-autosuggestions)
 # atom brew bundler osx git github git-flow tmux tmuxinator zsh-syntax-highlighting zsh-completions
 
 source $ZSH/oh-my-zsh.sh
@@ -77,7 +77,7 @@ export EDITOR="vim"
 export TZ=Asia/Kolkata
 
 # path
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:~/.composer/vendor/bin:~/.rvm/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:$HOME/.composer/vendor/bin:$HOME/.rvm/bin"
 
 # homebrew fix
 export HOMEBREW_GITHUB_API_TOKEN=42e428f759af0cee27ce481dec43e535d198af62
@@ -87,15 +87,14 @@ export LSCOLORS=ExFxcxdxbxexexabagacad
 (( $+commands[gdircolors] )) && eval $(gdircolors ~/.dir_colors)
 
 # grep colours
-export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="1;32"
 
 # display usage statistics for commands running > 5 sec.
 REPORTTIME=5
 
 # zsh autosuggest
-bindkey '^[' autosuggest-execute
-bindkey '^]' autosuggest-clear
+bindkey '^[' autosuggest-clear
+bindkey '^]' autosuggest-execute
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 # -----------------------------------------------------------------------------
 
@@ -200,6 +199,49 @@ autoload -U compinit &&
     bindkey '^Xh' _complete_help
     bindkey '^X?' _complete_debug
 }
+
+# composer
+_composer_get_command_list () {
+    $_comp_command1 --no-ansi 2>/dev/null | sed "1,/Available commands/d" | awk '/^[ \t]*[a-z]+/ { print $1 }'
+}
+
+_composer_get_required_list () {
+    $_comp_command1 show -s --no-ansi 2>/dev/null | sed '1,/requires/d' | awk 'NF > 0 && !/^requires \(dev\)/{ print $1 }'
+}
+
+_composer () {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments \
+    '1: :->command'\
+    '*: :->args'
+
+  case $state in
+    command)
+      compadd $(_composer_get_command_list)
+      ;;
+    *)
+      compadd $(_composer_get_required_list)
+      ;;
+  esac
+}
+
+compdef _composer composer
+compdef _composer composer.phar
+
+# npm
+(( $+commands[npm] )) && {
+    __NPM_COMPLETION_FILE="${ZSH_CACHE_DIR}/npm_completion"
+
+    if [[ ! -f $__NPM_COMPLETION_FILE ]]; then
+        npm completion >! $__NPM_COMPLETION_FILE 2>/dev/null
+        [[ $? -ne 0 ]] && rm -f $__NPM_COMPLETION_FILE
+    fi
+
+    [[ -f $__NPM_COMPLETION_FILE ]] && source $__NPM_COMPLETION_FILE
+
+    unset __NPM_COMPLETION_FILE
+}
 # -----------------------------------------------------------------------------
 
 
@@ -212,14 +254,14 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # ls
-alias l="gls -AFt --group-directories-first --color=auto"
-alias ls="gls -AFtS --group-directories-first --color=auto"
-alias ll="gls -AFtGhl --group-directories-first --color=auto"
-alias lls="gls -AFtGhlS --group-directories-first --color=auto"
+alias ls="ls -AFt --group-directories-first --color=auto"
+alias lss="ls -AFtS --group-directories-first --color=auto"
+alias ll="ls -AFtGhl --group-directories-first --color=auto"
+alias lls="ls -AFtGhlS --group-directories-first --color=auto"
 
 # essentials
-alias s="sudo"
-alias ss="sudo -s"
+alias -g s="sudo"
+alias ss="sudo service"
 alias rm="sudo rm -rf"
 alias rr="exec $SHELL -l"
 alias q="exit"
@@ -228,9 +270,10 @@ alias -g g="grep"
 alias t="tail -F"
 alias h="history | grep"
 alias ct="cat"
-alias lss="less"
+alias -g l="less"
 alias n="sudo nano"
-alias v="sudo vim"
+alias -g v="sudo vim"
+alias a="atom"
 alias rc="sudo vim ~/.zshrc"
 alias prc="cat ~/.zshrc"
 alias grc="cat ~/.zshrc | grep"
@@ -241,9 +284,11 @@ alias gnrc="cat ~/.nanorc | grep"
 alias vrc="sudo vim ~/.vimrc"
 alias pvrc="cat ~/.vimrc"
 alias gvrc="cat ~/.vimrc | grep"
+alias op="nautilus"
+alias boot="sudo reboot"
 alias culprit="lsof | grep"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
-alias restartDock="killall Dock"
+# alias restartDock="killall Dock"
 alias lazy="history | awk '{CMD[\$2]++;count++;}END { for (a in CMD)print CMD[a] \" \" CMD[a]/count*100 \"% \" a;}' | grep -v \"./\" | column -c3 -s \" \" -t | sort -nr | nl | head -n20"
 # alias r="cd ~/Documents/Work/Workspaces/R; jekyll build --destination ~/Documents/Work/Workspaces/rahulthakur.me --config _config_live.yml; cd ~/Documents/Work/Workspaces/rahulthakur.me; git add .; git commit -m 'Updated --auto-deploy'; git push;"
 
@@ -259,32 +304,37 @@ alias frcg="sudo find /private/var/tmp -name \"cachegrind*\" -exec rm -rf {} \;"
 alias frt="sudo rm -rf /System/Library/Caches/com.apple.coresymbolicationd/data; sudo find /private/var/tmp -name \"cachegrind*\" -exec rm -rf {} \;"
 
 # update os (osx)
-alias osu="sudo softwareupdate -i -a"
+# alias osu="sudo softwareupdate -i -a"
 
 # update os (ubuntu)
-# alias osv="lsb_release -a"
-# alias osu="do-release-upgrade -d -f DistUpgradeViewNonInteractive"
+alias osv="lsb_release -a"
+alias osu="do-release-upgrade -d -f DistUpgradeViewNonInteractive"
 
 # brew
-alias b="brew"
-alias bri="brew install"
-alias brs="brew search"
-alias brl="brew leaves"
-alias brll="brew list"
-alias bru="brew update; brew upgrade --all; brew cleanup"
+# alias b="brew"
+# alias bri="brew install"
+# alias brs="brew search"
+# alias brl="brew leaves"
+# alias brll="brew list"
+# alias bru="brew update; brew upgrade --all; brew cleanup"
 
 # apt
-# alias apti="sudo apt-get install -y"
-# alias apts="sudo apt-cache search"
-# alias aptl="sudo dpkg --get-selections | grep -v deinstall"
-# alias aptu="sudo apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y"
+alias apti="sudo apt install -y"
+alias apts="sudo apt search"
+alias aptl="sudo apt list --installed"
+alias aptu="sudo apt update; sudo apt upgrade -y; sudo apt clean; sudo apt autoclean -y; sudo apt autoremove -y"
 
 # composer
 alias pcomp="cat composer.json"
-alias compi="composer global install"
+alias gcomp="cat composer.json | grep"
+alias compr="composer require"
+alias comprd="composer require --dev"
+alias compi="composer install"
+alias compgi="composer global install"
 alias comps="composer search"
 alias compl="composer global show -i"
-alias compu="composer global self-update; composer global update; composer global clear-cache"
+alias compu="composer update"
+alias compgu="composer global self-update; composer global update; composer global clear-cache"
 alias dump="composer dump-autoload -o"
 
 # npm
@@ -307,16 +357,17 @@ alias geml="gem search -a -l"
 alias gemu="gem update --system; gem update; gem cleanup"
 
 # update everything (osx)
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; sudo composer global self-update; sudo composer global update; sudo composer global clear-cache; sudo npm install npm -g; sudo npm update -g; sudo npm cache clean; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U; sudo rm -rf ~/.pip/cache/; sudo gem update --system; sudo gem update; sudo gem cleanup"
+# alias update="sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; sudo composer global self-update; sudo composer global update; sudo composer global clear-cache; sudo npm install npm -g; sudo npm update -g; sudo npm cache clean; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U; sudo rm -rf ~/.pip/cache/; sudo gem update --system; sudo gem update; sudo gem cleanup"
 
 # update everything (ubuntu)
-# alias update="do-release-upgrade -d -f DistUpgradeViewNonInteractive; apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y; composer global self-update; composer global update; composer global clear-cache; npm install npm -g; npm update -g; npm cache clean; pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U; rm -rf ~/.pip/cache/; gem update --system; gem update; gem cleanup"
+alias update="do-release-upgrade -d -f DistUpgradeViewNonInteractive; apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y; composer global self-update; composer global update; composer global clear-cache; npm install npm -g; npm update -g; npm cache clean; pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U; rm -rf ~/.pip/cache/; gem update --system; gem update; gem cleanup"
 
 # git
 alias pgc="cat .git/config"
 alias egc="vim .git/config"
 alias pggc="cat ~/.gitconfig"
 alias eggc="vim ~/.gitconfig"
+alias ggcc="git clone"
 alias gre="git remote"
 alias grev="git remote -v"
 alias grea="git remote add"
@@ -325,11 +376,13 @@ alias greall="git_remote_all"
 alias gs="git status"
 alias gb="git branch"
 alias gch="git checkout"
+alias gchp="git checkout -p"
+alias gchd="git checkout -- ."
 alias gcb="git checkout -b"
 alias gchb="git checkout -b"
 alias ga="git add"
-alias gap="git add -p"
 alias gaa="git add ."
+alias gap="git add -p"
 alias gc="git commit"
 alias gcp="git commit -i"
 alias gcm="git commit -m"
@@ -372,23 +425,23 @@ alias gloga="git log --all --pretty=format:'%C(yellow)%h%Creset %C(bold cyan)%<(
 
 # dev
 alias eh="sudo vim /etc/hosts"
-alias jb="jekyll build -w"
-alias js="jekyll serve -w"
-alias bdi="bundle install"
-alias pw="cd ~/.pow"
+# alias jb="jekyll build -w"
+# alias js="jekyll serve -w"
+# alias bdi="bundle install"
+# alias pw="cd ~/.pow"
+alias art="php artisan"
+alias node="nodejs"
+alias nn="npm run clean && npm start"
+alias es="eslint client server --fix --ignore-path .gitignore"
 
 # vagrant
-alias hs="sudo vim ~/.homestead/Homestead.yaml"
-alias vs="vagrant global-status"
-alias vu="vagrant up 4f83841"
-alias vh="vagrant halt 4f83841"
-alias vr="vagrant reload 4f83841"
-alias ve="vagrant ssh 4f83841"
-alias vp="vagrant reload 4f83841 --provision"
-
-# mj
-alias qa="ssh qa.musejam.com"
-alias prod="ssh musejam.com"
+# alias hs="sudo vim ~/.homestead/Homestead.yaml"
+# alias vs="vagrant global-status"
+# alias vu="vagrant up 4f83841"
+# alias vh="vagrant halt 4f83841"
+# alias vr="vagrant reload 4f83841"
+# alias ve="vagrant ssh 4f83841"
+# alias vp="vagrant reload 4f83841 --provision"
 # -----------------------------------------------------------------------------
 
 

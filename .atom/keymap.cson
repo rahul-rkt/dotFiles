@@ -24,48 +24,18 @@
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
 
-'.platform-darwin':
-  'ctrl-cmd-p': 'unset!'
+'.platform-darwin, .platform-win32, .platform-linux':
   'alt-shift-p': 'project-manager:toggle'
-  'cmd-\\': 'unset!'
-  'cmd-`': 'unset!'
-  'ctrl-`': 'unset!'
   'ctrl-`': 'tree-view:toggle'
-  'cmd-t': 'unset!'
   'ctrl-o': 'fuzzy-finder:toggle-file-finder'
 
-'body':
-  'cmd-n': 'unset!'
+'atom-workspace':
+  'ctrl-n': 'advanced-open-file:toggle'
 
-'.platform-darwin atom-workspace':
-  'alt-cmd-o': 'unset!'
-  'cmd-n': 'advanced-open-file:toggle'
-
-'.platform-darwin atom-text-editor':
-  'ctrl-shift-L': 'unset!'
-  'cmd-t': 'grammar-selector:show'
+'atom-text-editor':
+  'ctrl-t': 'grammar-selector:show'
+  'ctrl-shift-n': 'find-and-replace:select-all'
 
 'body':
-  'ctrl-tab': 'unset!'
-  'ctrl-]': 'unset!'
-  'ctrl-shift-tab': 'unset!'
-  'ctrl-[': 'unset!'
-
   'ctrl-]': 'pane:show-next-item'
   'ctrl-[': 'pane:show-previous-item'
-
-'body':
-  'cmd-k cmd-left': 'unset!'
-  'cmd-k cmd-up': 'unset!'
-  'cmd-k cmd-right': 'unset!'
-  'cmd-k cmd-down': 'unset!'
-
-  'cmd-l left': 'unset!'
-  'cmd-l up': 'unset!'
-  'cmd-l right': 'unset!'
-  'cmd-l down': 'unset!'
-
-  'cmd-l left': 'window:focus-pane-on-left'
-  'cmd-l up': 'window:focus-pane-above'
-  'cmd-l right': 'window:focus-pane-on-right'
-  'cmd-l down': 'window:focus-pane-below'

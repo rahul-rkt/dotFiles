@@ -190,6 +190,7 @@
     prettierOptions:
       jsxBracketSameLine: true
       singleQuote: true
+      tabWidth: "4"
     useEslint: true
   "pretty-json":
     prettifyOnSaveJSON: true

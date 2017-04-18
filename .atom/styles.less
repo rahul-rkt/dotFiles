@@ -1,42 +1,149 @@
-/*
- * Your Stylesheet
- *
- * This stylesheet is loaded when Atom starts up and is reloaded automatically
- * when it is changed.
- *
- * If you are unfamiliar with LESS, you can read more about it here:
- * http://www.lesscss.org
- */
-
+// the sidebar
 .tree-view {
-
+    font-family: "Fira Sans" !important;
+    font-size: 11px !important;
 }
 
-// style the background and foreground colors on the atom-text-editor-element
-// itself
+// directory structure excluding files
+.list-tree li.list-nested-item > .list-item {
+    font-family: "Fira Sans" !important;
+    font-weight: 500;
+    font-size: 11px;
+    font-weight: 300;
+    margin: 2px 0;
+    opacity: .3;
+}
+
+// on hover effect for directories
+.list-tree li.list-nested-item > .list-item:hover {
+    font-weight: 500;
+    opacity: .8;
+}
+
+// nested directory last child
+.list-tree li.list-nested-item:nth-last-child(1) {
+    margin-bottom: 20px;
+}
+
+// currently selected file
+.list-tree li:not(.list-nested-item).selected {
+    font-size: 11px;
+    font-weight: 500;
+    opacity: 1;
+}
+
+// currently selected directory
+.list-tree li.list-nested-item .selected > .list-item {
+    font-size: 11px;
+    font-weight: 500;
+    opacity: 1;
+}
+
+// files in the tree, obviously these cannot be nested further
+.list-tree li:not(.list-nested-item) {
+    font-family: "Fira Sans" !important;
+    font-weight: 500;
+    font-size: 11px;
+    font-style: italic;
+    font-weight: 300;
+    margin: 2px 0;
+    opacity: .3;
+}
+
+// on hover effect for the files
+.list-tree li:not(.list-nested-item):hover {
+    font-weight: 500;
+    font-family: "Fira Sans" !important;
+    opacity: .8;
+}
+
+// last file in the list
+.list-tree li:not(.list-nested-item):nth-last-child(1) {
+    margin-bottom: 20px;
+}
+
+// children of the selected
+.selected > .list-tree li.list-nested-item > .list-item {
+    font-weight: 400;
+    opacity: .8;
+}
+
+// hover effect for the children of the selected
+.selected > .list-tree li.list-nested-item > .list-item:hover {
+    font-weight: 500;
+    opacity: 1;
+}
+
+// normalise children of the selected
+.selected > .list-tree > li {
+    font-weight: 400;
+    opacity: .6;
+}
+
+// normalised hover effect for the children of the selected
+.selected > .list-tree > li:hover {
+    font-weight: 500;
+    opacity: 1;
+}
+
+// style the background and foreground colors on the atom-text-editor-element itself
 atom-text-editor {
-
+    line-height: 50px;
 }
 
-// To style other content in the text editor's shadow DOM, use the ::shadow
-// expression
+// fix cursor size
+.editor:not(.mini) .cursor {
+	height: 30px !important;
+	margin-top: 10px;
+}
+
+// to style other content in the text editor's shadow DOM, use the ::shadow expression
 atom-text-editor::shadow .cursor {
 
 }
 
-// -----------------------------------------------------------------------------
-// Custom
-// -----------------------------------------------------------------------------
-
-atom-text-editor, atom-text-editor::shadow {
-    // Box
-    // .highlights .highlight-selected .region {
-    //     border-color: #4f5b66;
-    //     background-color: #2d3944;
-    // }
-}
+// selection box
+// atom-text-editor, atom-text-editor::shadow {
+//     .highlights .highlight-selected .region {
+//         border-color: #4f5b66;
+//         background-color: #2d3944;
+//     }
+// }
 
 // trailing whitespace
 .trailing-spaces-highlight-indentation atom-text-editor:not(.mini)::shadow .lines .line:not(.cursor-line) .trailing-whitespace.indent-guide {
     background: #ffaa2c;
 }
+
+// scope brackets
+// @-webkit-keyframes bracketanimation {
+//     from {
+//         border-width: 1px;
+//         border-color: rgba(120, 100, 150, .25);
+//     }
+//     50% {
+//         border-width: 3px;
+//         border-color: rgba(120, 100, 150, 1);
+//     }
+//     to {
+//         border-width: 1px;
+//         border-color: rgba(120, 100, 150, 0.5);
+//     }
+// }
+
+// purple-base : rgba(120, 100, 150, 1)
+atom-text-editor::shadow .bracket-matcher .region {
+    border: 1px solid rgba(66, 66, 132, 0.5);
+    border-radius: 2px;
+    background-color: rgba(66, 66, 132, .25);
+    z-index: 100;
+}
+
+// atom-text-editor::shadow .bracket-matcher .region {
+//     content: "";
+//     -webkit-animation-name: bracketanimation;
+//     -webkit-animation-duration: .5s;
+//     width: 100%;
+//     height: 100%;
+//    position: absolute;
+// }

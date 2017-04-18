@@ -77,7 +77,7 @@ export EDITOR="vim"
 export TZ=Asia/Kolkata
 
 # path
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:$HOME/.composer/vendor/bin:$HOME/.rvm/bin:./node_modules/.bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:$HOME/.composer/vendor/bin:$HOME/.rvm/bin:`yarn global bin`"
 
 # ls colours
 export LSCOLORS=ExFxcxdxbxexexabagacad
@@ -334,10 +334,32 @@ alias compgu="composer global self-update; composer global update; composer glob
 alias dump="composer dump-autoload -o"
 
 # npm
-alias npmi="npm install -g"
+alias npmi="npm i"
+alias npmid="npm i --save"
+alias npmidd="npm i --save-dev"
+alias npmig="npm i -g"
+alias npmo="npm outdated"
+alias npmu="npm update"
+alias npmw="npm shrinkwrap"
 alias npms="npm search"
 alias npml="npm ls -g"
-alias npmu="npm install npm -g; npm update -g; npm cache clean"
+alias npmug="npm i npm -g; npm update -g; npm cache clean"
+
+# yarn
+alias y="yarn install"
+alias yo="yarn outdated"
+alias yu="yarn upgrade"
+alias ygu="yarn global upgrade"
+alias ya="yarn add"
+alias yga="yarn global add"
+alias yad="yarn add --dev"
+alias yr="yarn run"
+alias yrm="yarn remove"
+alias ygrm="yarn global remove"
+alias ych="yarn check --integrity"
+alias ycl="yarn clean"
+alias yl="yarn ls"
+alias ygl="yarn global ls"
 
 # pip
 alias pipi="pip install"
@@ -429,6 +451,7 @@ alias art="php artisan"
 alias node="nodejs"
 alias nn="npm run clean && npm start"
 alias es="eslint client server --fix --ignore-path .gitignore"
+alias tt="curl -s http://api.referyaar.dev/r | jq"
 
 # vagrant
 # alias hs="sudo vim ~/.homestead/Homestead.yaml"

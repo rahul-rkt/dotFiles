@@ -1,4 +1,8 @@
 "*":
+  Zen:
+    gutter: true
+    typewriter: true
+    width: 100
   "advanced-open-file":
     createDirectories: true
     createFileInstantly: true
@@ -8,10 +12,15 @@
   "atom-beautify":
     general:
       _analyticsUserId: "d63c1e81-f0c2-47b0-8116-87e720539296"
+      analytics: false
+      muteUnsupportedLanguageErrors: true
     html:
       indent_inner_html: true
       indent_scripts: "separate"
       max_preserve_newlines: 2
+    json:
+      beautify_on_save: true
+    php: {}
   "atom-material-ui":
     colors:
       abaseColor: "#756c84"
@@ -74,6 +83,7 @@
       "php-integrator-navigation"
       "php-integrator-refactoring"
       "php-integrator-tooltips"
+      "language-gfm"
     ]
     excludeVcsIgnoredPaths: false
     ignoredNames: [
@@ -86,13 +96,13 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "atom-material-ui"
-      "gloom"
+      "nord-atom-ui"
+      "ariake-dark-syntax"
     ]
   editor:
     backUpBeforeSaving: true
     fontFamily: "Mononoki"
-    fontSize: 11
+    fontSize: 12
     invisibles: {}
     lineHeight: 3
     scrollPastEnd: true
@@ -110,13 +120,22 @@
   "genesis-ui":
     distractionFree:
       hideSpotified: true
-  "gruvbox-plus-syntax": {}
+  "gruvbox-plus-syntax":
+    contrast: "Hard"
+    variant: "No Dimmed Colors"
+  "keybinding-cheatsheet": {}
+  "markdown-preview-plus":
+    enableLatexRenderingByDefault: true
+    useGitHubStyle: true
   minimap:
     plugins:
       "highlight-selected": true
     scrollAnimation: true
     scrollAnimationDuration: 250
     textOpacity: 0.5
+  "nord-atom-syntax":
+    accessibility:
+      commentContrast: 1
   "nord-atom-ui":
     darkerFormFocusEffect: true
   nuclide:
@@ -165,6 +184,15 @@
     groupPaletteColors: "by file"
     markerType: "dot"
     sortPaletteColors: "by color"
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+    prettierOptions:
+      jsxBracketSameLine: true
+      singleQuote: true
+    useEslint: true
+  "pretty-json":
+    prettifyOnSaveJSON: true
   "project-manager":
     environmentSpecificProjects: true
     sortBy: "title"
@@ -175,6 +203,13 @@
     launch_at_startup: true
   "save-session":
     dataSaveFolder: "/Users/rahulthakur/.atom/packages/save-session/projects"
+  "seti-syntax":
+    themeColor: "Steel"
+  "seti-ui":
+    fileIcons: false
+    font: "Default Atom Font"
+    hideTabs: true
+    themeColor: "Red"
   "split-diff":
     diffWords: true
     ignoreWhitespace: true
@@ -216,3 +251,6 @@
   editor:
     softWrapHangingIndent: 2
     tabLength: 4
+".json.source":
+  editor:
+    softWrapAtPreferredLineLength: true

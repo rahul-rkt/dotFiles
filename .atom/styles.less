@@ -101,7 +101,14 @@ atom-text-editor {
 
 // to style other content in the text editor's shadow DOM, use the ::shadow expression
 atom-text-editor::shadow .cursor {
+}
 
+// hide all scrollbars, please
+.scrollbars-visible-always {
+    /deep/ ::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
 }
 
 // selection box

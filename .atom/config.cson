@@ -8,10 +8,12 @@
     createFileInstantly: true
     fuzzyMatch: true
   aligner:
+    ",-leftSpace": true
+    ":-leftSpace": true
     alignComments: true
-  "aligner-php":
-    "=-leftSpace": false
-    "=>-leftSpace": false
+  "aligner-javascript":
+    ":-leftSpace": true
+  "aligner-php": {}
   "atom-autocomplete-php":
     insertNewlinesForUseStatements: true
     verboseErrors: true
@@ -147,6 +149,7 @@
   "highlight-selected":
     hideHighlightOnSelectedWord: true
     highlightBackground: true
+    lightTheme: true
     onlyHighlightWholeWords: false
     showInStatusBar: false
   "keybinding-cheatsheet": {}

@@ -92,6 +92,9 @@ REPORTTIME=5
 # zsh autosuggest
 bindkey '^\' autosuggest-execute
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+
+# support for extended globbing at all times
+setopt extended_glob
 # -----------------------------------------------------------------------------
 
 
@@ -392,7 +395,7 @@ alias grea="git remote add"
 alias grer="git remote rm"
 alias greall="git_remote_all"
 alias gs="git status"
-alias gb="git branch"
+alias gb="git branch -a"
 alias gch="git checkout"
 alias gchp="git checkout -p"
 alias gchd="git checkout -- ."

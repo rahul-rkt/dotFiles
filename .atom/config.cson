@@ -6,6 +6,12 @@
   "advanced-open-file":
     createDirectories: true
     createFileInstantly: true
+    fuzzyMatch: true
+  aligner:
+    alignComments: true
+  "aligner-php":
+    "=-leftSpace": false
+    "=>-leftSpace": false
   "atom-autocomplete-php":
     insertNewlinesForUseStatements: true
     verboseErrors: true
@@ -40,6 +46,8 @@
       panelContrast: true
       panelShadows: true
   "atom-minify": {}
+  "atom-package-deps":
+    ignored: []
   "auto-copyright":
     owner: "R (r@rahulthakur.me)"
     template: "Copyright (c) %y by %o."
@@ -54,8 +62,11 @@
   "color-picker":
     preferredFormat: "HEX"
     uppercaseColorValues: true
+  "command-palette":
+    preserveLastSearch: true
   core:
     autoHideMenuBar: true
+    closeDeletedFileTabs: true
     customFileTypes:
       "source.ini": [
         ".buckconfig"
@@ -68,37 +79,32 @@
         "BUCK"
       ]
     disabledPackages: [
-      "markdown-preview"
       "minimap"
       "minimap-highlight-selected"
-      "status-bar"
       "tabs"
       "terminal-status"
       "travis-ci-status"
-      "php-integrator-annotations"
-      "php-integrator-autocomplete-plus"
-      "php-integrator-base"
-      "php-integrator-call-tips"
-      "php-integrator-linter"
-      "php-integrator-navigation"
-      "php-integrator-refactoring"
-      "php-integrator-tooltips"
+      "status-bar"
+      "welcome"
+      "styleguide"
+      "package-generator"
+      "open-on-github"
       "language-gfm"
+      "link"
+      "about"
+      "background-tips"
+      "intentions"
     ]
     excludeVcsIgnoredPaths: false
-    ignoredNames: [
-      ".git"
-      ".DS_Store"
-      ".vagrant"
-      "_site"
-      ".sass-cache"
-      ".idea .brackets.json"
-    ]
+    projectHome: "/home/r/Documents/Work/Workspaces"
     telemetryConsent: "no"
     themes: [
       "nord-atom-ui"
       "ariake-dark-syntax"
     ]
+    warnOnLargeFileLimit: 5
+  "cursor-blink-interval":
+    cursorBlinkInterval: 1000
   editor:
     backUpBeforeSaving: true
     fontFamily: "Mononoki"
@@ -106,24 +112,52 @@
     invisibles: {}
     lineHeight: 3
     scrollPastEnd: true
+    scrollSensitivity: 60
     showIndentGuide: true
     softWrap: true
+    softWrapAtPreferredLineLength: true
     softWrapHangingIndent: 2
     tabLength: 4
     tabType: "soft"
+    zoomFontWhenCtrlScrolling: false
   "exception-reporting":
     userId: "a7118940-a776-5e76-08c6-0311f9b89de7"
   "file-icons":
     forceShow: true
   "file-watcher":
     promptWhenFileHasChangedOnDisk: false
+  "find-and-replace":
+    focusEditorAfterSearch: true
+    projectSearchResultsPaneSplitDirection: "right"
+    scrollToResultOnLiveSearch: true
+  "fuzzy-finder":
+    preserveLastSearch: true
+    searchAllPanes: true
   "genesis-ui":
     distractionFree:
       hideSpotified: true
+  "git-diff":
+    showIconsInEditorGutter: true
+  "glowing-cursor":
+    cursorWidth: 7
+    glowDistance: 14
+    transitionDuration: 800
   "gruvbox-plus-syntax":
     contrast: "Hard"
     variant: "No Dimmed Colors"
+  "highlight-selected":
+    hideHighlightOnSelectedWord: true
+    highlightBackground: true
+    onlyHighlightWholeWords: false
+    showInStatusBar: false
   "keybinding-cheatsheet": {}
+  "language-babel":
+    autoIndentJSX: true
+  "line-ending-selector":
+    defaultLineEnding: "LF"
+  "markdown-preview":
+    breakOnSingleNewline: true
+    useGitHubStyle: true
   "markdown-preview-plus":
     enableLatexRenderingByDefault: true
     useGitHubStyle: true
@@ -171,6 +205,12 @@
     layoutMode: "Compact"
   "package-sync":
     createOnChange: true
+    forceOverwrite: true
+  "php-cs-fixer":
+    executeOnSave: true
+    rules: "@PSR4"
+  "php-debug":
+    currentPanelMode: "bottom"
   "php-integrator-autocomplete-plus":
     disableBuiltinAutocompletion: false
   "php-integrator-base":
@@ -195,7 +235,8 @@
   "pretty-json":
     prettifyOnSaveJSON: true
   "project-manager":
-    environmentSpecificProjects: true
+    alwaysOpenInSameWindow: true
+    includeGitRepositories: true
     sortBy: "title"
   react:
     enabledForAllJavascriptFiles: true
@@ -211,6 +252,8 @@
     font: "Default Atom Font"
     hideTabs: true
     themeColor: "Red"
+  "spell-check":
+    addKnownWords: true
   "split-diff":
     diffWords: true
     ignoreWhitespace: true
@@ -222,6 +265,13 @@
     enableVcsColoring: true
     tabScrolling: true
     usePreviewTabs: true
+  "tabs-to-spaces":
+    onSave: "untabify"
+  "terminal-plus":
+    style:
+      fontFamily: "Mononoki"
+      fontSize: "9px"
+      theme: "homebrew"
   "terminal-status":
     WindowHeight: 10
   "todo-show":
@@ -233,8 +283,9 @@
     enableForIndentation: true
   "travis-ci-status": {}
   "tree-view":
-    hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
+    alwaysOpenExisting: true
+    autoReveal: true
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
 ".coffee.jsx.source":

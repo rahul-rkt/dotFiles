@@ -1,25 +1,24 @@
 // the sidebar
 .tree-view {
-    font-family: "Fira Sans" !important;
     font-size: 11px !important;
     background-color: rgb(42, 48, 60);
+    font-family: "Fira Sans" !important;
     border-right: 1px rgb(34, 40, 52) solid;
 }
 
 // directory structure excluding files
 .list-tree li.list-nested-item > .list-item {
-    font-family: "Fira Sans" !important;
-    font-weight: 500;
+    opacity: .3;
+    margin: 2px 0;
     font-size: 11px;
     font-weight: 300;
-    margin: 2px 0;
-    opacity: .3;
+    font-family: "Fira Sans" !important;
 }
 
 // on hover effect for directories
 .list-tree li.list-nested-item > .list-item:hover {
-    font-weight: 500;
     opacity: .8;
+    font-weight: 500;
 }
 
 // nested directory last child
@@ -29,34 +28,33 @@
 
 // currently selected file
 .list-tree li:not(.list-nested-item).selected {
+    opacity: 1;
     font-size: 11px;
     font-weight: 500;
-    opacity: 1;
 }
 
 // currently selected directory
 .list-tree li.list-nested-item .selected > .list-item {
+    opacity: 1;
     font-size: 11px;
     font-weight: 500;
-    opacity: 1;
 }
 
 // files in the tree, obviously these cannot be nested further
 .list-tree li:not(.list-nested-item) {
-    font-family: "Fira Sans" !important;
-    font-weight: 500;
-    font-size: 11px;
-    font-style: italic;
-    font-weight: 300;
-    margin: 2px 0;
     opacity: .3;
+    margin: 2px 0;
+    font-size: 11px;
+    font-weight: 300;
+    font-style: italic;
+    font-family: "Fira Sans" !important;
 }
 
 // on hover effect for the files
 .list-tree li:not(.list-nested-item):hover {
+    opacity: .8;
     font-weight: 500;
     font-family: "Fira Sans" !important;
-    opacity: .8;
 }
 
 // last file in the list
@@ -66,41 +64,89 @@
 
 // children of the selected
 .selected > .list-tree li.list-nested-item > .list-item {
-    font-weight: 400;
     opacity: .8;
+    font-weight: 400;
 }
 
 // hover effect for the children of the selected
 .selected > .list-tree li.list-nested-item > .list-item:hover {
-    font-weight: 500;
     opacity: 1;
+    font-weight: 500;
 }
 
 // normalise children of the selected
 .selected > .list-tree > li {
-    font-weight: 400;
     opacity: .6;
+    font-weight: 400;
 }
 
 // normalised hover effect for the children of the selected
 .selected > .list-tree > li:hover {
-    font-weight: 500;
     opacity: 1;
+    font-weight: 500;
 }
 
-// style the background and foreground colors on the atom-text-editor-element itself
+// atom-text-editor-element
 atom-text-editor {
-    line-height: 50px;
+    line-height: 36px;
+}
+
+// desaturate inactive panes
+atom-pane:not(*.active) {
+    -webkit-filter: saturate(.33);
+}
+
+// hide indent-guide in inactive panes
+atom-pane:not(*.active) .indent-guide {
+    opacity: 0;
+}
+
+// dim indent-guide
+.indent-guide {
+    opacity: .33;
+}
+
+// split pane border : horizontal
+atom-pane-container atom-pane-axis.horizontal > * {
+    border-width: 5px;
+    border-color: rgba(31, 31, 52, .5);
+}
+
+// split pane border : vertical
+atom-pane-container atom-pane-axis.vertical > atom-pane-resize-handle.vertical {
+    margin: 0;
+    border-bottom-width: 5px;
+    border-bottom-color: rgba(31, 31, 52, .5);
+}
+
+// wrap-guide as no-go zone and rather than fence
+.editor .wrap-guide {
+    width: 100%;
+    // opacity: .0987654321;
+    background-color: rgba(200, 50, 50, 0.033);
+}
+
+// disable wrap-guide for inactive panes
+atom-pane:not(*.active) .editor .wrap-guide {
+    opacity: 0;
+}
+
+// remove bottom border
+atom-panel-container.bottom {
+    border: 0;
+}
+
+// remove jshint pane
+.atom-jshint-pane {
+    opacity: 0;
+    border: 0;
 }
 
 // fix cursor size
 .editor:not(.mini) .cursor {
-	height: 30px !important;
-	margin-top: 10px;
-}
-
-// to style other content in the text editor's shadow DOM, use the ::shadow expression
-atom-text-editor::shadow .cursor {
+    margin-top: 6px;
+    border-radius: 2px;
+    height: 24px !important;
 }
 
 // hide all scrollbars, please
@@ -119,9 +165,16 @@ atom-text-editor::shadow .cursor {
 //     }
 // }
 
-// trailing whitespace
+// trailing whitespace : EOL
+.trailing-spaces-highlight-indentation atom-text-editor:not(.mini)::shadow .lines .line:not(.cursor-line) .trailing-whitespace {
+    background: #f08300;
+    opacity: 1;
+}
+
+// trailing whitespace : BOL
 .trailing-spaces-highlight-indentation atom-text-editor:not(.mini)::shadow .lines .line:not(.cursor-line) .trailing-whitespace.indent-guide {
-    background: #ffaa2c;
+    background: #f08300;
+    opacity: 1;
 }
 
 // scope brackets
@@ -142,17 +195,17 @@ atom-text-editor::shadow .cursor {
 
 // purple-base : rgba(120, 100, 150, 1)
 atom-text-editor::shadow .bracket-matcher .region {
-    border: 1px solid rgba(66, 66, 132, 0.5);
-    border-radius: 2px;
-    background-color: rgba(66, 66, 132, .25);
     z-index: 100;
+    border-radius: 2px;
+    border: 1px solid rgba(66, 66, 132, 0.5);
+    background-color: rgba(66, 66, 132, .25);
 }
 
 // atom-text-editor::shadow .bracket-matcher .region {
 //     content: "";
-//     -webkit-animation-name: bracketanimation;
-//     -webkit-animation-duration: .5s;
 //     width: 100%;
 //     height: 100%;
 //    position: absolute;
+//     -webkit-animation-duration: .5s;
+//     -webkit-animation-name: bracketanimation;
 // }

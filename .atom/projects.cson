@@ -1,25 +1,30 @@
-BowINIT:
-  title: "BowINIT"
-  paths: [
-    "/Users/rahulthakur/Documents/Work/Workspaces/BowINIT"
-  ]
-dotFiles:
-  title: "dotFiles"
-  paths: [
-    "/Users/rahulthakur/Documents/Work/Workspaces/dotFiles"
-  ]
-R:
-  title: "R"
-  paths: [
-    "/Users/rahulthakur/Documents/Work/Workspaces/R"
-  ]
-Musejam:
-  title: "Musejam"
-  paths: [
-    "/Users/rahulthakur/Documents/Work/Musejam/musejam-app"
-  ]
-Zk:
-  title: "Zk"
-  paths: [
-    "/Users/rahulthakur/Documents/Work/catCorp/Zk"
-  ]
+[
+  {
+    title: "Referyaar Master"
+    group: "Referyaar"
+    paths: [
+      "/home/r/Documents/Work/Workspaces/referyaar-master"
+    ]
+  }
+  {
+    title: "Referyaar Android"
+    group: "Referyaar"
+    paths: [
+      "/home/r/Documents/Work/Workspaces/referyaar-android"
+    ]
+  }
+  {
+    title: "Referyaar React"
+    group: "Referyaar"
+    paths: [
+      "/home/r/Documents/Work/Workspaces/referyaar-react"
+    ]
+  }
+  {
+    title: "Referyaar Wiki"
+    group: "Referyaar"
+    paths: [
+      "/home/r/Documents/Work/Workspaces/referyaar.wiki"
+    ]
+  }
+]

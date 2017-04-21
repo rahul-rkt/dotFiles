@@ -1,14 +1,19 @@
 // the sidebar
 .tree-view {
+    opacity: .9;
     font-size: 11px !important;
     background-color: rgb(42, 48, 60);
     font-family: "Fira Sans" !important;
     border-right: 1px rgb(34, 40, 52) solid;
 }
 
+// fix arrow alignment
+.list-tree.has-collapsable-children .list-nested-item > .list-item::before {
+    top: 2px;
+}
+
 // directory structure excluding files
 .list-tree li.list-nested-item > .list-item {
-    opacity: .3;
     margin: 2px 0;
     font-size: 11px;
     font-weight: 300;
@@ -17,7 +22,6 @@
 
 // on hover effect for directories
 .list-tree li.list-nested-item > .list-item:hover {
-    opacity: .8;
     font-weight: 500;
 }
 
@@ -28,21 +32,18 @@
 
 // currently selected file
 .list-tree li:not(.list-nested-item).selected {
-    opacity: 1;
     font-size: 11px;
     font-weight: 500;
 }
 
 // currently selected directory
 .list-tree li.list-nested-item .selected > .list-item {
-    opacity: 1;
     font-size: 11px;
     font-weight: 500;
 }
 
 // files in the tree, obviously these cannot be nested further
 .list-tree li:not(.list-nested-item) {
-    opacity: .3;
     margin: 2px 0;
     font-size: 11px;
     font-weight: 300;
@@ -52,7 +53,6 @@
 
 // on hover effect for the files
 .list-tree li:not(.list-nested-item):hover {
-    opacity: .8;
     font-weight: 500;
     font-family: "Fira Sans" !important;
 }
@@ -64,25 +64,21 @@
 
 // children of the selected
 .selected > .list-tree li.list-nested-item > .list-item {
-    opacity: .8;
     font-weight: 400;
 }
 
 // hover effect for the children of the selected
 .selected > .list-tree li.list-nested-item > .list-item:hover {
-    opacity: 1;
     font-weight: 500;
 }
 
 // normalise children of the selected
 .selected > .list-tree > li {
-    opacity: .6;
     font-weight: 400;
 }
 
 // normalised hover effect for the children of the selected
 .selected > .list-tree > li:hover {
-    opacity: 1;
     font-weight: 500;
 }
 

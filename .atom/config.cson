@@ -136,8 +136,7 @@
   "genesis-ui":
     distractionFree:
       hideSpotified: true
-  "git-diff":
-    showIconsInEditorGutter: true
+  "git-diff": {}
   "glowing-cursor":
     cursorWidth: 7
     glowDistance: 14

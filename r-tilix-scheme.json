@@ -1,15 +1,8 @@
 {
     "name": "R",
     "comment": "R's Tilix Color Scheme",
-    "dim-color": "#232232",
-    "bold-color": "#E17B34",
-    "badge-color": "#9E3D3F",
     "background-color": "#1A1D27",
     "foreground-color": "#B5BAD0",
-    "cursor-background-color": "#B5BAD0",
-    "cursor-foreground-color": "#1A1D27",
-    "highlight-background-color": "#F8E58C",
-    "highlight-foreground-color": "#1A1D27",
     "palette": [
         "#2A2D37",
         "#86B1E0",
@@ -28,10 +21,5 @@
         "#A0D8EF",
         "#6B728D"
     ],
-    "use-dim-color": true,
-    "use-bold-color": true,
-    "use-badge-color": true,
-    "use-cursor-color": true,
-    "use-theme-colors": false,
-    "use-highlight-color": true
+    "use-theme-colors": false
 }

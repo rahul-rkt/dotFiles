@@ -1,8 +1,7 @@
 # -----------------------------------------------------------------------------
 #          FILE:  .bashrc
 #   DESCRIPTION:  Bash configuration file
-#        AUTHOR:  Rahul Thakur < rahulthakur.me | r@rahulthakur.me >
-#       VERSION:  1.0.0
+#        AUTHOR:  R
 # -----------------------------------------------------------------------------
 
 

@@ -2,8 +2,7 @@
 # -----------------------------------------------------------------------------
 #          FILE:  R.zsh-theme
 #   DESCRIPTION:  ZSH Prompt theme
-#        AUTHOR:  R <rahulthakur.me>
-#       VERSION:  1.0.0
+#        AUTHOR:  R
 # -----------------------------------------------------------------------------
 
 
@@ -21,40 +20,33 @@ R_PROMPT_CODE_PRIVILEGED="$" # the privileged prompt
 R_GIT_MARKER="●" # the marker for git status changes
 R_SEPARATOR_FILLER="-" # the separator line filler
 R_MAX_PWD_DEPTH=5 # max number of dir to show before shortening the path, ~ excluded!
+R_USE_TERMINAL_COLOURS=true # true = default colours; false = set custom colours if supported
 # -----------------------------------------------------------------------------
 
 
 # aesthetics ------------------------------------------------------------------
-# colours based on available range
-if [ $terminfo[colors] -ge 256 ]; then
+# colours
+if [ "$R_USE_TERMINAL_COLOURS" = false && $terminfo[colors] -ge 256 ]; then
     R_C_BLACK="%F{238}"
-    R_C_GREY="%F{242}"
-    R_C_WHITE="%F{246}"
     R_C_RED="%F{124}"
     R_C_GREEN="%F{71}"
-    R_C_BLUE="%F{38}"
-    R_C_YELLOW="%F{214}"
-    R_C_MAGENTA="%F{175}"
+    R_C_YELLOW="%F{208}"
+    R_C_BLUE="%F{87}"
+    R_C_MAGENTA="%F{135}"
     R_C_CYAN="%F{87}"
-    R_C_PURPLE="%F{135}"
-    R_C_ORANGE="%F{208}"
-    R_C_AQUA="%F{114}"
+    R_C_WHITE="%F{246}"
 else
     R_C_BLACK="%F{black}"
-    R_C_GREY="%F{black}"
-    R_C_WHITE="%F{white}"
     R_C_RED="%F{red}"
     R_C_GREEN="%F{green}"
-    R_C_BLUE="%F{blue}"
     R_C_YELLOW="%F{yellow}"
+    R_C_BLUE="%F{blue}"
     R_C_MAGENTA="%F{magenta}"
     R_C_CYAN="%F{cyan}"
-    R_C_PURPLE="%F{magenta}"
-    R_C_ORANGE="%F{yellow}"
-    R_C_AQUA="%F{green}"
+    R_C_WHITE="%F{white}"
 fi
 
-# foreground background reset
+# reset colours
 R_C_RESET="%f"
 
 # styles
@@ -76,9 +68,9 @@ R_GIT_UNSTAGED_FORMAT="${R_C_RED}${R_GIT_MARKER}"
 R_GIT_UNTRACKED_FORMAT="${R_C_MAGENTA}${R_GIT_MARKER}"
 R_GIT_BRANCH_FORMAT_REFERENCE="${R_C_CYAN}%b%c%u"
 R_GIT_BRANCH_FORMAT=${R_GIT_BRANCH_FORMAT_REFERENCE}
-R_GIT_ACTION_FORMAT="${R_C_YELLOW}ongoing-%a${R_C_GREY}::"
-R_GIT_INFO_OPEN="${R_C_GREY}("
-R_GIT_INFO_CLOSE="${R_C_GREY})${R_C_RESET}"
+R_GIT_ACTION_FORMAT="${R_C_YELLOW}ongoing-%a${R_C_BLACK}::"
+R_GIT_INFO_OPEN="${R_C_BLACK}("
+R_GIT_INFO_CLOSE="${R_C_BLACK})${R_C_RESET}"
 
 # set formats
 zstyle ':vcs_info:git:prompt:*' unstagedstr "${R_GIT_UNSTAGED_FORMAT}"
@@ -102,16 +94,16 @@ r_chpwd()
     local pwd="${PWD/#$HOME/~}"
     local -a pwd_list;pwd_list=(${(ps:/:)pwd})
     local pwd_count="${#pwd_list[@]}"
-    local s="${R_C_ORANGE}/"
+    local s="${R_C_YELLOW}/"
 
-    pwd="${R_C_AQUA}${pwd_list[${pwd_count}]}"
+    pwd="${R_C_GREEN}${pwd_list[${pwd_count}]}"
     for (( i=${pwd_count}-1; i>${pwd_count}-${R_MAX_PWD_DEPTH} && i>0; i-- )); do
-        pwd="${R_C_GREY}${pwd_list[${i}]}${s}${pwd}"
+        pwd="${R_C_BLACK}${pwd_list[${i}]}${s}${pwd}"
     done
     if [[ ${pwd_count} -ge ${R_MAX_PWD_DEPTH}+2 ]]; then
-        pwd="${R_C_GREY}${pwd_list[1]}${s}${R_C_BLACK}..${s}${pwd}"
+        pwd="${R_C_BLACK}${pwd_list[1]}${s}${R_C_BLACK}...${s}${pwd}"
     elif [[ ${pwd_count} -ge ${R_MAX_PWD_DEPTH}+1 ]]; then
-        pwd="${R_C_GREY}${pwd_list[1]}${s}${pwd}"
+        pwd="${R_C_BLACK}${pwd_list[1]}${s}${pwd}"
     fi
 
     R_PWD="${R_S_BOLD}${pwd}${R_S_NORMAL}"
@@ -143,7 +135,7 @@ function r_precmd
         zstyle ':vcs_info:git:prompt:*' formats "${R_GIT_INFO_OPEN}${R_GIT_BRANCH_FORMAT}${R_GIT_INFO_CLOSE}"
     fi
     vcs_info 'prompt'
-    R_PROMPT_INFO_LINE="${R_C_BLACK}${R_PROMPT_CODE} ${R_S_BOLD}${R_C_BLUE}%n${R_S_NORMAL} ${R_C_GREY}at ${R_C_PURPLE}%m ${R_C_GREY}in ${R_PWD} ${vcs_info_msg_0_}"
+    R_PROMPT_INFO_LINE="${R_C_BLACK}${R_PROMPT_CODE} ${R_C_RED}%n ${R_C_BLACK}at ${R_C_MAGENTA}%m ${R_C_BLACK}in ${R_PWD} ${R_S_BOLD}${vcs_info_msg_0_}${R_S_NORMAL}"
 }
 add-zsh-hook precmd r_precmd
 # -----------------------------------------------------------------------------
@@ -152,8 +144,8 @@ add-zsh-hook precmd r_precmd
 # make prompt -----------------------------------------------------------------
 r_chpwd # builds R_PWD for R_PROMPT_INFO_LINE
 r_precmd # builds R_PROMPT_SEPARATOR_LINE & R_PROMPT_INFO_LINE
-R_PROMPT_LINE="%(?.${R_C_GREEN}.${R_C_RED})%(!.${R_PROMPT_CODE_PRIVILEGED}.${R_PROMPT_CODE})${R_C_RESET} "
-R_RPROMPT_TIMESTAMP="${R_C_GREY}${R_S_BOLD}%D{%a %d %b},${R_S_NORMAL} ${R_C_WHITE}%D{%L:%M:%S%p}${R_C_RESET}"
+R_PROMPT_LINE="%(?.${R_C_GREEN}.${R_C_YELLOW})%(!.${R_PROMPT_CODE_PRIVILEGED}.${R_PROMPT_CODE})${R_C_RESET} "
+R_RPROMPT_TIMESTAMP="${R_C_BLACK}${R_S_BOLD}%D{%a %d %b}, ${R_C_WHITE}%D{%L:%M:%S%p}${R_C_RESET}${R_S_NORMAL}"
 
 # set left prompt
 PROMPT=$'${R_PROMPT_SEPARATOR_LINE}

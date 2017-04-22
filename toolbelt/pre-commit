@@ -2,8 +2,7 @@
 # -----------------------------------------------------------------------------
 #          FILE:  pre-commit
 #   DESCRIPTION:  Git pre-commit hook
-#        AUTHOR:  Rahul Thakur < rahulthakur.me | r@rahulthakur.me >
-#       VERSION:  1.0.0
+#        AUTHOR:  R
 # -----------------------------------------------------------------------------
 
 
@@ -15,4 +14,4 @@ exec git diff-index --check --cached $against --
 for f in $(git status --porcelain | grep '^??' | sed 's/^?? //'); do
     test -L "$f" && echo $f >> .gitignore
     test -d "$f" && echo $f\* >> .gitignore
-dones
+done

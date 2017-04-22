@@ -1,82 +1,83 @@
 [user]
-	name = R
-	email = r@rahulthakur.me
+    name    = R
+    email   = r@rahulthakur.me
 
 [core]
-	excludesfile = ~/.gitignore_global
-	autocrlf = input
-	safecrlf = true
+    safecrlf        = true
+    autocrlf        = input
+    excludesfile    = ~/.gitignore_global
+    attributesfile  = ~/.gitattributes_global
 
 [color]
-	ui = true
+    ui = true
 
 [color "status"]
-	header = black bold
-	added = blue bold
-	updated = green bold
-	changed = red bold
-	untracked = magenta bold
-	nobranch = red dim
+    added       = blue bold
+    changed     = red bold
+    nobranch    = red dim
+    header      = black bold
+    updated     = green bold
+    untracked   = magenta bold
 
 [color "grep"]
-	match = green bold
+    match = green bold
 
 [color "interactive"]
-	prompt = normal dim
-	header = green
-	help = blue
-	error = red bold
+    help    = blue
+    header  = green
+    error   = red bold
+    prompt  = normal dim
 
 [color "diff"]
-	meta = magenta
-	frag = blue bold
-	plain = black bold
-	old = red
-	new = green
-	commit = yellow
-	whitespace = normal reverse
+    old         = red
+    new         = green
+    meta        = magenta
+    commit      = yellow
+    frag        = blue bold
+    plain       = black bold
+    whitespace  = normal reverse
 
 [color "branch"]
-	current = green bold
-	local = magenta dim
-	remote = red dim
-	plain = normal dim
+    remote   = red dim
+    plain    = normal dim
+    local    = magenta dim
+    current  = green bold
 
 [fetch]
-	prune = true
+    prune = true
 
 [push]
-	default = current
+    default = current
 
 [diff]
-	tool = meld
+    tool = meld
 
 [difftool]
-	prompt = false
+    prompt = false
 
 [difftool "meld"]
-	cmd = meld "$LOCAL" "$REMOTE" > /dev/null 2>&1
+    cmd = meld "$LOCAL" "$REMOTE" > /dev/null 2>&1
 
 [merge]
-	ff = true
-	conflictstyle = diff3
-	tool = meld
+    ff = true
+    tool = meld
+    conflictstyle = diff3
 
 [mergetool "meld"]
-	# cmd = meld "$BASE" "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED" > /dev/null 2>&1
-	cmd = meld --diff "$BASE" "$LOCAL" --diff "$BASE" "$REMOTE" --diff "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED" > /dev/null 2>&1
-	trustExitCode = true
+    trustExitCode = true
+    cmd = meld --diff "$BASE" "$LOCAL" --diff "$BASE" "$REMOTE" --diff "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED" > /dev/null 2>&1
+    # cmd = meld "$BASE" "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED" > /dev/null 2>&1
 
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+    clean   = git-media-clean %f
+    smudge  = git-media-smudge %f
 
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+    required    = true
+    clean       = git hawser clean %f
+    smudge      = git hawser smudge %f
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+    required    = true
+    clean       = git-lfs clean %f
+    smudge      = git-lfs smudge %f

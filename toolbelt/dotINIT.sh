@@ -2,8 +2,7 @@
 # -----------------------------------------------------------------------------
 #          FILE:  dotINIT.sh
 #   DESCRIPTION:  Setup my dot files < https://github.com/rahul-rkt/dotFiles >
-#        AUTHOR:  Rahul Thakur < rahulthakur.me | r@rahulthakur.me >
-#       VERSION:  1.0.0
+#        AUTHOR:  R
 # -----------------------------------------------------------------------------
 
 

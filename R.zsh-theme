@@ -26,7 +26,7 @@ R_USE_TERMINAL_COLOURS=true # true = default colours; false = set custom colours
 
 # aesthetics ------------------------------------------------------------------
 # colours
-if [ "$R_USE_TERMINAL_COLOURS" = false && $terminfo[colors] -ge 256 ]; then
+if [ "$R_USE_TERMINAL_COLOURS" = false ] && [ $terminfo[colors] -ge 256 ]; then
     R_C_BLACK="%F{238}"
     R_C_RED="%F{124}"
     R_C_GREEN="%F{71}"

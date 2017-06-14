@@ -50,10 +50,10 @@ HIST_STAMPS="dd/mm/yyyy"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*) Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/ Example format: plugins=(rails git textmate ruby
-# lighthouse) Add wisely, as too many plugins slow down shell startup.
-plugins=(git redis-cli colored-man-pages command-not-found web-search safe-paste history-substring-search last-working-dir extract dircycle colorize battery compleat zsh-syntax-highlighting zsh-256color zsh-completions zsh-autosuggestions)
-# atom brew bundler osx git github git-flow tmux tmuxinator zsh-syntax-highlighting zsh-completions
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/ Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git composer npm yarn redis-cli colored-man-pages command-not-found safe-paste last-working-dir extract dircycle colorize battery compleat zsh-256color zsh-completions zsh-autosuggestions fast-syntax-highlighting history-search-multi-word zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 # -----------------------------------------------------------------------------
@@ -64,19 +64,19 @@ source $ZSH/oh-my-zsh.sh
 export TERM=xterm-256color
 
 # locale
-export LANG=en_GB.UTF-8
-export LANGUAGE=en_GB.UTF-8
-export LC_ALL=en_GB.UTF-8
-
-# editors
-export EDITOR="vim"
-# export VISUAL="atom"
+export LANG=en_IN.UTF-8
+export LANGUAGE=en_IN.UTF-8
+export LC_ALL=en_IN.UTF-8
 
 # timezone
 export TZ=Asia/Kolkata
 
 # path
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:$HOME/.composer/vendor/bin:$HOME/.rvm/bin:`yarn global bin`"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/heroku/bin:$HOME/.composer/vendor/bin:$HOME/.rvm/bin:./node_modules/bin:$HOME/.yarn-global/bin"
+
+# editors
+export EDITOR="vim"
+# export VISUAL="atom"
 
 # ls colours
 export LSCOLORS=ExFxcxdxbxexexabagacad
@@ -88,12 +88,23 @@ export GREP_COLOR="1;32"
 # display usage statistics for commands running > 5 sec.
 REPORTTIME=5
 
-# zsh autosuggest
-bindkey '^\' autosuggest-execute
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
-
 # support for extended globbing at all times
 setopt extended_glob
+
+# skip duplicates in history
+setopt HIST_FIND_NO_DUPS
+
+# zsh-autosuggestions
+bindkey '^[' autosuggest-clear
+bindkey '^]' autosuggest-accept
+bindkey '^\' autosuggest-execute
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=8
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
+
+# history-search-multi-word
+zstyle ":history-search-multi-word" highlight-color "fg=yellow,bold"
+zstyle ":plugin:history-search-multi-word" active "standout"
 # -----------------------------------------------------------------------------
 
 
@@ -114,6 +125,12 @@ autoload -U compinit &&
                                         _ignored \
                                         _gnu_generic \
                                         _approximate
+
+    # fuzzy completions ( abc => abc | abc => Abc | abc => A-big-Car | abc => ABraCadabra )
+    zstyle ':completion:*'    matcher-list '' \
+                              'm:{a-z\-}={A-Z\_}' \
+                              'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+                              'r:|?=** m:{a-z\-}={A-Z\_}'
 
     # speed up completion by avoiding partial globs
     zstyle ':completion:*' accept-exact '*(N)'
@@ -197,49 +214,6 @@ autoload -U compinit &&
     bindkey '^Xh' _complete_help
     bindkey '^X?' _complete_debug
 }
-
-# composer
-_composer_get_command_list () {
-    $_comp_command1 --no-ansi 2>/dev/null | sed "1,/Available commands/d" | awk '/^[ \t]*[a-z]+/ { print $1 }'
-}
-
-_composer_get_required_list () {
-    $_comp_command1 show -s --no-ansi 2>/dev/null | sed '1,/requires/d' | awk 'NF > 0 && !/^requires \(dev\)/{ print $1 }'
-}
-
-_composer () {
-  local curcontext="$curcontext" state line
-  typeset -A opt_args
-  _arguments \
-    '1: :->command'\
-    '*: :->args'
-
-  case $state in
-    command)
-      compadd $(_composer_get_command_list)
-      ;;
-    *)
-      compadd $(_composer_get_required_list)
-      ;;
-  esac
-}
-
-compdef _composer composer
-compdef _composer composer.phar
-
-# npm
-(( $+commands[npm] )) && {
-    __NPM_COMPLETION_FILE="${ZSH_CACHE_DIR}/npm_completion"
-
-    if [[ ! -f $__NPM_COMPLETION_FILE ]]; then
-        npm completion >! $__NPM_COMPLETION_FILE 2>/dev/null
-        [[ $? -ne 0 ]] && rm -f $__NPM_COMPLETION_FILE
-    fi
-
-    [[ -f $__NPM_COMPLETION_FILE ]] && source $__NPM_COMPLETION_FILE
-
-    unset __NPM_COMPLETION_FILE
-}
 # -----------------------------------------------------------------------------
 
 
@@ -269,7 +243,7 @@ alias t="tail -F"
 alias h="history | grep"
 alias ct="cat"
 alias -g l="less"
-alias n="sudo nano"
+alias -g n="sudo nano"
 alias -g v="sudo vim"
 alias a="atom"
 alias rc="sudo vim ~/.zshrc"
@@ -297,9 +271,9 @@ alias ffat="sudo find -x / -type f -size +100M"
 alias ffatx="sudo find -x / -type f -size +250M"
 alias ffatxx="sudo find -x / -type f -size +500M"
 alias ffatxxx="sudo find -x / -type f -size +1G"
-alias frcd="sudo rm -rf /System/Library/Caches/com.apple.coresymbolicationd/data"
-alias frcg="sudo find /private/var/tmp -name \"cachegrind*\" -exec rm -rf {} \;"
-alias frt="sudo rm -rf /System/Library/Caches/com.apple.coresymbolicationd/data; sudo find /private/var/tmp -name \"cachegrind*\" -exec rm -rf {} \;"
+# alias frcd="sudo rm -rf /System/Library/Caches/com.apple.coresymbolicationd/data"
+# alias frcg="sudo find /private/var/tmp -name \"cachegrind*\" -exec rm -rf {} \;"
+# alias frt="sudo rm -rf /System/Library/Caches/com.apple.coresymbolicationd/data; sudo find /private/var/tmp -name \"cachegrind*\" -exec rm -rf {} \;"
 
 # update os (osx)
 # alias osu="sudo softwareupdate -i -a"
@@ -336,19 +310,19 @@ alias compgu="composer global self-update; composer global update; composer glob
 alias dump="composer dump-autoload -o"
 
 # npm
-alias npmi="npm i"
-alias npmid="npm i --save"
-alias npmidd="npm i --save-dev"
-alias npmig="npm i -g"
+alias npmi="npm install"
+alias npmid="npm install --save"
+alias npmidd="npm install --save-dev"
+alias npmig="npm install -g"
 alias npmo="npm outdated"
 alias npmu="npm update"
 alias npmw="npm shrinkwrap"
 alias npms="npm search"
 alias npml="npm ls -g"
-alias npmug="npm i npm -g; npm update -g; npm cache clean"
+alias npmug="npm install npm -g; npm update -g; npm cache clean"
 
 # yarn
-alias y="yarn install"
+alias yi="yarn install"
 alias yo="yarn outdated"
 alias yu="yarn upgrade"
 alias ygu="yarn global upgrade"
@@ -360,7 +334,7 @@ alias yrm="yarn remove"
 alias ygrm="yarn global remove"
 alias ych="yarn check --integrity"
 alias ycl="yarn clean"
-alias yl="yarn ls"
+alias yl="yarn list"
 alias ygl="yarn global ls"
 
 # pip
@@ -377,10 +351,10 @@ alias geml="gem search -a -l"
 alias gemu="gem update --system; gem update; gem cleanup"
 
 # update everything (osx)
-# alias update="sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; sudo composer global self-update; sudo composer global update; sudo composer global clear-cache; sudo npm install npm -g; sudo npm update -g; sudo npm cache clean; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U; sudo rm -rf ~/.pip/cache/; sudo gem update --system; sudo gem update; sudo gem cleanup"
+# alias update="sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; sudo composer global self-update; sudo composer global update; sudo composer global clear-cache; sudo npm install npm -g; sudo npm update -g; sudo npm cache clean; sudo pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U; sudo rm -rf ~/.pip/cache/; sudo gem update --system; sudo gem update; sudo gem cleanup; yarn global upgrade"
 
 # update everything (ubuntu)
-alias update="do-release-upgrade -d -f DistUpgradeViewNonInteractive; apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y; composer global self-update; composer global update; composer global clear-cache; npm install npm -g; npm update -g; npm cache clean; pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U; rm -rf ~/.pip/cache/; gem update --system; gem update; gem cleanup"
+alias update="do-release-upgrade -d -f DistUpgradeViewNonInteractive; apt-get update; apt-get upgrade -y; apt-get clean; apt-get autoclean -y; composer global self-update; composer global update; composer global clear-cache; npm install npm -g; npm update -g; npm cache clean; pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U; rm -rf ~/.pip/cache/; gem update --system; gem update; gem cleanup; yarn global upgrade"
 
 # git
 alias pgc="cat .git/config"
@@ -394,7 +368,9 @@ alias grea="git remote add"
 alias grer="git remote rm"
 alias greall="git_remote_all"
 alias gs="git status"
-alias gb="git branch -a"
+alias gb="git branch"
+alias gba="git branch -a"
+alias gbd="git branch -D"
 alias gch="git checkout"
 alias gchp="git checkout -p"
 alias gchd="git checkout -- ."
@@ -474,12 +450,45 @@ git_remote_all()
     do git config --add remote.all.url "$url"
     done < <(git remote -v | awk '!/^all/ && /push/')
 }
+
+# unwanted keys
+disable_numpad()
+{
+    xmodmap -e 'keycode 77 = '
+    xmodmap -e 'keycode 79 = '
+    xmodmap -e 'keycode 80 = '
+    xmodmap -e 'keycode 81 = '
+    xmodmap -e 'keycode 83 = '
+    xmodmap -e 'keycode 84 = '
+    xmodmap -e 'keycode 85 = '
+    xmodmap -e 'keycode 87 = '
+    xmodmap -e 'keycode 88 = '
+    xmodmap -e 'keycode 89 = '
+    xmodmap -e 'keycode 90 = '
+    xmodmap -e 'keycode 91 = '
+}
+
+enable_numpad()
+{
+    xmodmap -e 'keycode  77 = Num_Lock NoSymbol Num_Lock'
+    xmodmap -e 'keycode  79 = KP_Home KP_7 KP_Home KP_7'
+    xmodmap -e 'keycode  80 = KP_Up KP_8 KP_Up KP_8'
+    xmodmap -e 'keycode  81 = KP_Prior KP_9 KP_Prior KP_9'
+    xmodmap -e 'keycode  83 = KP_Left KP_4 KP_Left KP_4'
+    xmodmap -e 'keycode  84 = KP_Begin KP_5 KP_Begin KP_5'
+    xmodmap -e 'keycode  85 = KP_Right KP_6 KP_Right KP_6'
+    xmodmap -e 'keycode  87 = KP_End KP_1 KP_End KP_1'
+    xmodmap -e 'keycode  88 = KP_Down KP_2 KP_Down KP_2'
+    xmodmap -e 'keycode  89 = KP_Next KP_3 KP_Next KP_3'
+    xmodmap -e 'keycode  90 = KP_Insert KP_0 KP_Insert KP_0'
+    xmodmap -e 'keycode  91 = KP_Delete KP_Decimal KP_Delete KP_Decimal'
+}
 # -----------------------------------------------------------------------------
 
 
 # External --------------------------------------------------------------------
 source ~/.profile
-source ~/.tmuxinator/tmuxinator.zsh
+# source ~/.tmuxinator/tmuxinator.zsh
 source ~/z.sh
 # -----------------------------------------------------------------------------
 

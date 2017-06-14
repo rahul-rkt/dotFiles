@@ -1,4 +1,48 @@
+# JS --------------------------------------------------------------------------
 '.source.js':
+    # React ...................................................................
+    # Attributes --------------------------------------------------------------
+    'attr-className':
+        'prefix': 'acn'
+        'body': 'className={this.props.className}'
+    # -------------------------------------------------------------------------
+
+    # DocBlocks ---------------------------------------------------------------
+    'docblock':
+        'prefix': 'dbk'
+        'body': """
+        /**
+         * $1
+         *
+         * @author R
+         */
+
+        """
+    # -------------------------------------------------------------------------
+
+    # Imports -----------------------------------------------------------------
+    'import-react':
+        'prefix': 'irr'
+        'body': 'import React from \'react\';'
+
+    'import-prop-types':
+        'prefix': 'ipt'
+        'body': 'import PropTypes from \'prop-types\';'
+
+    'import-styled-components':
+        'prefix': 'isc'
+        'body': 'import styled from \'styled-components\';'
+
+    'import-styles':
+        'prefix': 'iss'
+        'body': 'import { $1 } from \'Styles\';'
+
+    'import-semantic-ui':
+        'prefix': 'iui'
+        'body': 'import { $1 } from \'semantic-ui-react\';'
+    # -------------------------------------------------------------------------
+
+    # Lint & Format -----------------------------------------------------------
     'eslint-disable':
         'prefix': 'esd'
         'body': '/* eslint-disable $1 */'
@@ -13,3 +57,58 @@
         /* eslint-disable $1 */
         /* eslint-enable $1 */
         """
+
+    'prettier-ignore':
+        'prefix': 'ppi'
+        'body': '// prettier-ignore'
+    # -------------------------------------------------------------------------
+
+    # Props -------------------------------------------------------------------
+    'props-className':
+        'prefix': 'ppt'
+        'body': """
+        import PropTypes from 'prop-types';$3
+        $1.propTypes = {
+            className: PropTypes.string$2
+        };
+
+        """
+    # -------------------------------------------------------------------------
+
+    # Skeleton ----------------------------------------------------------------
+    'stateless-skeleton':
+        'prefix': 'sks'
+        'body': """
+        /**
+         * $2
+         *
+         * @author R
+         */
+
+        import React from 'react';
+        import PropTypes from 'prop-types';
+        import styled from 'styled-components';$3
+
+        const $1 = props => {
+            const Container = styled.div``;
+
+            return (
+                <Container className={props.className}>
+                    $4
+                </Container>
+            );
+        };
+
+        $1.propTypes = {
+            className: PropTypes.string
+        };
+
+        export default $1;
+        """
+
+    'styled-component-skeleton':
+        'prefix': 'stc'
+        'body': 'const $1 = styled.div`$2`;'
+    # -------------------------------------------------------------------------
+    # .........................................................................
+# -----------------------------------------------------------------------------

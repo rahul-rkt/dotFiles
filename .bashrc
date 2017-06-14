@@ -18,7 +18,7 @@ export LC_ALL=en_IN.UTF-8
 export EDITOR='nano'
 
 # timezone
-export TZ=Asia/Hong_Kong
+export TZ=Asia/Kolkata
 # -----------------------------------------------------------------------------
 
 echo -e "\n\n Y U NO USE ZSH? \n\n"

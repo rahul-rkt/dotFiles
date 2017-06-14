@@ -91,17 +91,20 @@ zstyle ':vcs_info:git:prompt:*' nvcsformats ""
 # chpwd : Executed whenever the current working directory is changed.
 r_chpwd()
 {
-    local pwd="${PWD/#$HOME/~}"
-    local -a pwd_list;pwd_list=(${(ps:/:)pwd})
-    local pwd_count="${#pwd_list[@]}"
-    local s="${R_C_YELLOW}/"
+    local pwd="${PWD/#$HOME/~}" # pwd
+    local -a pwd_list; pwd_list=(${(ps:/:)pwd}) # split by /
+    local pwd_count="${#pwd_list[@]}" # dir depth count
+    local s="${R_C_YELLOW}/" # make separators stand out as secondary
 
-    pwd="${R_C_GREEN}${pwd_list[${pwd_count}]}"
+    pwd="${R_C_GREEN}${pwd_list[${pwd_count}]}" # append current, make it stand out as primary
+    # build dimmed dir list from second last till defined max depth
     for (( i=${pwd_count}-1; i>${pwd_count}-${R_MAX_PWD_DEPTH} && i>0; i-- )); do
         pwd="${R_C_BLACK}${pwd_list[${i}]}${s}${pwd}"
     done
+    # nested dirs > current(1) + defined max depth + root(1) => append root + ellipses
     if [[ ${pwd_count} -ge ${R_MAX_PWD_DEPTH}+2 ]]; then
-        pwd="${R_C_BLACK}${pwd_list[1]}${s}${R_C_BLACK}...${s}${pwd}"
+        pwd="${R_C_BLACK}${pwd_list[1]}${s}${R_C_BLACK}..${s}${pwd}"
+    # nested dirs > current(1) + defined max depth => append root
     elif [[ ${pwd_count} -ge ${R_MAX_PWD_DEPTH}+1 ]]; then
         pwd="${R_C_BLACK}${pwd_list[1]}${s}${pwd}"
     fi
@@ -115,8 +118,8 @@ function r_precmd
 {
     # update separator line : for terminal width change
     # check if the width has actually changed
-    local this_width="(${COLUMNS} - 4)"
-    if [[ -z ${R_TERMINAL_WIDTH} || ${this_width} != ${R_TERMINAL_WIDTH} ]]; then
+    local this_width="(${COLUMNS} - 3)"
+    if [ -z ${R_TERMINAL_WIDTH} ] || [ ${this_width} != ${R_TERMINAL_WIDTH} ]; then
         R_TERMINAL_WIDTH=${this_width}
         local separator="\${(l.(${R_TERMINAL_WIDTH})..${R_SEPARATOR_FILLER}.)}"
         R_PROMPT_SEPARATOR_LINE="  ${R_C_BLACK}${(e)separator}${R_C_RESET}"
@@ -153,5 +156,5 @@ ${R_PROMPT_INFO_LINE}
 ${R_PROMPT_LINE}'
 
 # set right prompt
-RPROMPT=$'${R_RPROMPT_TIMESTAMP} '
+RPROMPT=$'${R_RPROMPT_TIMESTAMP}'
 # -----------------------------------------------------------------------------

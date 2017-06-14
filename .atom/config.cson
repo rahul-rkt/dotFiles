@@ -26,6 +26,7 @@
       indent_inner_html: true
       indent_scripts: "separate"
       max_preserve_newlines: 2
+    js: {}
     json:
       beautify_on_save: true
     php: {}
@@ -96,6 +97,8 @@
       "about"
       "background-tips"
       "intentions"
+      "linter-php"
+      "php-integrator-linter"
     ]
     excludeVcsIgnoredPaths: false
     projectHome: "/home/r/Documents/Work/Workspaces"
@@ -114,10 +117,9 @@
     invisibles: {}
     lineHeight: 3
     scrollPastEnd: true
-    scrollSensitivity: 60
+    scrollSensitivity: 80
     showIndentGuide: true
     softWrap: true
-    softWrapAtPreferredLineLength: true
     softWrapHangingIndent: 2
     tabLength: 4
     tabType: "soft"
@@ -159,7 +161,6 @@
     defaultLineEnding: "LF"
   "markdown-preview":
     breakOnSingleNewline: true
-    useGitHubStyle: true
   "markdown-preview-plus":
     enableLatexRenderingByDefault: true
     useGitHubStyle: true
@@ -209,15 +210,13 @@
     createOnChange: true
     forceOverwrite: true
   "php-cs-fixer":
-    executeOnSave: true
-    rules: "@PSR4"
+    executablePath: "/usr/local/bin/php-cs-fixer"
   "php-debug":
     currentPanelMode: "bottom"
-  "php-integrator-autocomplete-plus":
-    disableBuiltinAutocompletion: false
-  "php-integrator-base":
-    insertNewlinesForUseStatements: true
+  "php-integrator-autocomplete-plus": {}
+  "php-integrator-base": {}
   "php-integrator-linter":
+    showMissingDocs: false
     showUnknownClasses: false
     validateDocblockCorrectness: false
   "php-integrator-symbol-viewer":
@@ -286,7 +285,6 @@
   "travis-ci-status": {}
   "tree-view":
     alwaysOpenExisting: true
-    autoReveal: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
@@ -307,4 +305,4 @@
     tabLength: 4
 ".json.source":
   editor:
-    softWrapAtPreferredLineLength: true
+    softWrapAtPreferredLineLength: false

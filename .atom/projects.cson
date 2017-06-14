@@ -4,7 +4,17 @@
     group: "Referyaar"
     paths: [
       "/home/r/Documents/Work/Workspaces/referyaar-master"
+      "/home/r/Documents/Work/Indrik/referyaar.wiki"
     ]
+    php:
+      enabled: true
+      php_integrator:
+        enabled: true
+        phpVersion: 5.6
+        excludedPaths: []
+        fileExtensions: [
+          "php"
+        ]
   }
   {
     title: "Referyaar Android"
@@ -26,5 +36,23 @@
     paths: [
       "/home/r/Documents/Work/Workspaces/referyaar.wiki"
     ]
+  }
+  {
+    title: "4P World Website"
+    group: "4P"
+    paths: [
+      "/home/r/Documents/Work/Workspaces/4p-world-website"
+      "/home/r/Documents/Work/Workspaces/4p-world-website.wiki"
+    ]
+    devMode: true
+  }
+  {
+    title: "Armada"
+    group: "4P"
+    paths: [
+      "/home/r/Documents/Work/Workspaces/armada"
+      "/home/r/Documents/Work/Workspaces/armada.wiki"
+    ]
+    devMode: true
   }
 ]

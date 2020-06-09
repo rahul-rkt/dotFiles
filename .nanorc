@@ -1,0 +1,103 @@
+# -----------------------------------------------------------------------------
+#          FILE:  .nanorc
+#   DESCRIPTION:  Nano configuration file
+#        AUTHOR:  R
+# -----------------------------------------------------------------------------
+
+
+# Includes --------------------------------------------------------------------
+include ~/.nano/syntax/ALL.nanorc
+# -----------------------------------------------------------------------------
+
+
+# Options ---------------------------------------------------------------------
+# auto-indentation
+set autoindent
+
+# unique backup files if file backups are enabled
+set backupdir directory ~/.backup/
+
+# characters treated as closing brackets when justifying paragraphs
+set brackets string "\"')>]}"
+
+# case sensitive searches by default
+set casesensitive
+
+# constantly display the cursor position in the status bar
+set const
+
+# do not use cut to end of line by default.
+unset cut
+
+# wrap lines @ screen width - n columns
+# set fill 3
+
+# enable ~/.nano_history for saving and reading search/replace strings
+set historylog
+
+# set opening and closing brackets that can be found by bracket searches
+set matchbrackets string "(<[{)>]}"
+
+# not allow use of the blank line below the titlebar as extra editing space
+unset morespace
+
+# enable/disable mouse support
+set mouse
+
+# allow inserting files into their own buffers
+set multibuffer
+
+# don't convert files from DOS/Mac format
+set noconvert
+
+# follow symlinks when writing files
+unset nofollow
+
+# help lists at the bottom of the screen
+unset nohelp
+
+# add newlines to the ends of files
+unset nonewlines
+
+# wrap text at all
+unset nowrap
+
+# don't preserve the XON and XOFF keys (^Q and ^S)
+unset preserve
+
+# hide statusbar messages after 1 keystroke instead of 25
+unset quickblank
+
+# deletekey fix
+unset rebinddelete
+
+# don't do extended regular expression searches by default
+unset regexp
+
+# homekey fix
+set smarthome
+
+# smooth scrolling
+set smooth
+
+# spelling checker
+set speller aspell
+
+# allow nano to be suspended
+set suspend
+
+# tab size
+set tabsize 2
+
+# don't convert typed tabs to spaces
+unset tabstospaces
+
+# don't save automatically on exit, always prompt
+unset tempfile
+
+# allow file modification
+unset view
+
+# don'o't treat punctuation characters as part of a word
+unset wordbounds
+# -----------------------------------------------------------------------------
